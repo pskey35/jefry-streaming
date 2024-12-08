@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import "../public/styles/index.scss"
 import Home from "./routes/home/home.jsx"
 import Login from "./routes/login/login.jsx"
-import Register from "./routes/register.jsx"
+import Register from "./routes/register/register.jsx"
 
 
 
