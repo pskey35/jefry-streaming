@@ -1,15 +1,13 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import "../public/styles/index.scss"
 import Home from "./routes/home/home.jsx"
 import Login from "./routes/login/login.jsx"
-import { useState, useEffect } from "react"
+import Register from "./routes/register.jsx"
 
 
 
 export default function App() {
-
-
-
 
   useEffect(() => {
     const darkTheme = localStorage.getItem("dark")
@@ -34,15 +32,12 @@ export default function App() {
     <BrowserRouter>
       <Routes>
 
-        <Route path="/" element={<Home></Home>}>
+        <Route path="/" element={<Home></Home>}></Route>
 
+        <Route path="/login" element={<Login></Login>}></Route>
 
-        </Route>
-
-        <Route path="/login" element={<Login></Login>}>
-
-        </Route>
-
+        <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="*" element={<Navigate to="/login" />} />
 
       </Routes>
 
