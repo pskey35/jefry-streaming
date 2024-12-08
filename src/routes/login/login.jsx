@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./login.scss"
-
+import  {useNavigate} from "react-router-dom"
 
 
 function Login() {
 
     const [isLoading, setIsLoading] = useState(false)
+
+    const navigate = useNavigate();
 
     const [messageLogin, setMessageLogin] = useState({
         error: false,
@@ -15,6 +17,10 @@ function Login() {
 
     const clickButtonSend = async () => {
         setIsLoading(true)
+        setMessageLogin({
+            error:false,
+            message:""
+        })
         const login_inputUserName = document.querySelector("#login-inputUserName")
         const login_inputPassword = document.querySelector("#login-inputPassword")
 
@@ -78,6 +84,10 @@ function Login() {
                 console.log("succes")
                 console.log(data)
                 localStorage.setItem("token", data.token)
+                navigate("/")
+
+
+
             } else {
                 setMessageLogin({
                     error: true,
@@ -238,4 +248,7 @@ function Login() {
     );
 };
 
+
 export default Login;
+
+
