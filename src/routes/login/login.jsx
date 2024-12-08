@@ -21,8 +21,8 @@ function Login() {
 
 
         const body = {
-            username: login_inputUserName.value,
-            password: login_inputPassword.value
+            username: login_inputUserName.value.trim(),
+            password: login_inputPassword.value.trim()
         }
 
 
@@ -75,6 +75,8 @@ function Login() {
             const data = await result.json()
 
             if (data?.token) {
+                console.log("succes")
+                console.log(data)
                 localStorage.setItem("token", data.token)
             } else {
                 setMessageLogin({
