@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import Header from "../../components/header.jsx"
-import Aside from "./aside.jsx"
+import Aside from "./aside-component.jsx"
 
 const Overlay = ({ isSideMenuOpen }) => {
     const [show, setShow] = useState(isSideMenuOpen);

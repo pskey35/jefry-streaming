@@ -81,8 +81,7 @@ function Login() {
             const data = await result.json()
 
             if (data?.token) {
-                console.log("succes")
-                console.log(data)
+
                 localStorage.setItem("token", data.token)
                 navigate("/")
 

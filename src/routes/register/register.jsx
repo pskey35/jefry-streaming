@@ -12,6 +12,8 @@ export default function Register() {
         message: ""
     })
 
+
+
     const inputUserName_event = (event) => {
 
         if (event.target.value.length == 0 || event.target.value.length >= 1) {
@@ -26,12 +28,35 @@ export default function Register() {
     const clickButtonSend = async () => {
         setIsLoading(true)
 
+        setMessageRegister({
+            error:false,
+            message:""
+        })
+
         const inputUserName = document.querySelector("#inputUserName")
         const inputPassword = document.querySelector("#inputPassword")
+        const inputRepeatPassword = document.querySelector("#inputRepeatPassword")
+
+
+        if (inputUserName.value.trim().length == 0) {
+            setMessageRegister({
+                error: false,
+                message: "Introduce your username"
+            })
+            setIsLoading(false)
+            inputUserName.style.border = "1px solid red";
+            return;
+        }else{
+            inputUserName.style.border = "1px solid #e2e8f0";
+        }
+
+
+   
+
 
         const inputsValue = {
             username: inputUserName.value.trim(),
-            password: inputPassword.value.trim()
+            password: inputPassword.value
         }
 
 
@@ -46,12 +71,40 @@ export default function Register() {
 
         if (inputsValue.password.length == 0) {
             setMessageRegister({
-                error:true,
-                message:"Put your password"
+                error: true,
+                message: "Put your password"
             })
             setIsLoading(false)
+      
+
+            inputPassword.style.border = "1px solid red"
+            inputRepeatPassword.style.border = "1px solid red"
+
+            return;
         }
 
+
+        if(inputRepeatPassword.value.length == 0){
+            inputRepeatPassword.style.border = "1px solid red"
+            setMessageRegister({
+                error:true,
+                message:"Your passwords do not matched"
+            })
+            setIsLoading(false)
+            return;
+        }else{
+            inputRepeatPassword.style.border = "1px solid #e2e8f0"
+        }
+
+        if(inputsValue.password == inputRepeatPassword.value){
+            setMessageRegister({
+                error:true,
+                message:"Your password do not matched"
+            })
+            setIsLoading(false)
+            return;
+        }
+      
 
 
 
@@ -80,7 +133,26 @@ export default function Register() {
     }
 
 
-    
+    const inputRepeatPassword_event = async (event) => {
+
+        const inputPassword = document.querySelector("#inputPassword")
+
+        if (inputPassword.value.trim() == event.target.value) {
+            inputPassword.style.border = "1px solid red"
+            event.target.style.border = "1px solid red"
+            setMessageRegister({
+                error: false,
+                message: "Your password do not match"
+            })
+            setIsLoading(false)
+            return;
+        }
+    }
+
+
+
+
+
 
     return (
         <div className="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
@@ -130,7 +202,8 @@ export default function Register() {
                                 <input
                                     className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input register-input"
                                     placeholder="***************"
-                                    id="inputRepeatPasswor"
+                                    onInput={inputRepeatPassword_event}
+                                    id="inputRepeatPassword"
                                     type="password"
                                 />
                             </label>
@@ -163,6 +236,9 @@ export default function Register() {
 
                             </div>
 
+                            <div className="register-message">
+                                {messageRegister.message}
+                            </div>
                             <hr className="my-8" />
 
                             <button
