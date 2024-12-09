@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react"
 import Header from "../../components/header.jsx"
 import Aside from "./aside-component.jsx"
-
+import { useNavigate } from "react-router-dom";
 const Overlay = ({ isSideMenuOpen }) => {
     const [show, setShow] = useState(isSideMenuOpen);
 
     useEffect(() => {
         setShow(isSideMenuOpen);
     }, [isSideMenuOpen]);
+
+
+
 
     return (
         <div
@@ -503,6 +506,21 @@ function Main() {
 }
 
 export default function Home() {
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+
+        if (token) {
+            if (token.length < 10) {
+                navigate("/login")
+            }
+        } else if (!token) {
+            navigate("/login")
+        }
+
+    }, [])
 
     return (
         <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
