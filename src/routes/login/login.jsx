@@ -1,25 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./login.scss"
-import  {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 
 function Login() {
 
     const [isLoading, setIsLoading] = useState(false)
-
     const navigate = useNavigate();
-
     const [messageLogin, setMessageLogin] = useState({
         error: false,
         message: ""
     })
 
 
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+
+        if (token) {
+            if (token.length > 10) {
+                navigate("/")
+            }
+        }
+    }, [])
+
+
     const clickButtonSend = async () => {
         setIsLoading(true)
         setMessageLogin({
-            error:false,
-            message:""
+            error: false,
+            message: ""
         })
         const login_inputUserName = document.querySelector("#login-inputUserName")
         const login_inputPassword = document.querySelector("#login-inputPassword")
@@ -28,7 +37,7 @@ function Login() {
 
         const body = {
             username: login_inputUserName.value.trim(),
-            password: login_inputPassword.value.trim()
+            password: login_inputPassword.value
         }
 
 
@@ -70,6 +79,7 @@ function Login() {
 
 
         try {
+            console.log(body)
             const result = await fetch(`${import.meta.env.VITE_api}/login`, {
                 method: "POST",
                 headers: {
@@ -87,11 +97,20 @@ function Login() {
 
 
 
-            } else {
+            } else if (data?.error) {
+                setMessageLogin({
+                    error: true,
+                    message: data.error
+                })
+                setIsLoading(false)
+                return;
+            } else if (data?.detail) {
                 setMessageLogin({
                     error: true,
                     message: data.detail
                 })
+                setIsLoading(false)
+                return;
             }
 
 
