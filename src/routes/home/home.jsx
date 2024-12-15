@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import Header from "../../components/header.jsx"
-
+import Aside from "../../components/aside.jsx"
 import { useNavigate } from "react-router-dom";
 const Overlay = ({ isSideMenuOpen }) => {
     const [show, setShow] = useState(isSideMenuOpen);
@@ -166,7 +166,7 @@ const SideMenu = () => {
 
 
 
-export default function Home() {
+function Main() {
 
     const navigate = useNavigate()
 
@@ -183,8 +183,8 @@ export default function Home() {
 
     }, [])
     return (
-        <main class="h-full overflow-y-auto">
-            <div class="container px-6 mx-auto grid">
+        <main class="h-full overflow-y-auto p-4">
+            <div class="container px-6 mx-auto grid pb-16">
                 <h2 className="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
                     Dashboard
                 </h2>
@@ -536,3 +536,19 @@ export default function Home() {
     )
 }
 
+
+
+
+export default function App() {
+    return (
+        <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
+            <Aside></Aside>
+            <div style={{ overflow: "hidden", flex: "1" }}>
+                <Header></Header>
+                <Main></Main>
+            </div>
+
+        </div>
+
+    )
+}

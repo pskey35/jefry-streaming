@@ -5,9 +5,7 @@ import Home from "./routes/home/home.jsx"
 import Login from "./routes/login/login.jsx"
 import Register from "./routes/register/register.jsx"
 import Suscripciones from "./routes/subscriptions/subscrition.jsx"
-import Header from "./components/header.jsx"
-import Aside from "./components/aside-component.jsx"
-import Main from "./routes/home/home.jsx"
+
 export default function App() {
 
   useEffect(() => {
@@ -31,30 +29,14 @@ export default function App() {
 
 
     <BrowserRouter>
-      <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
+      <Routes>
+        <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="*" element={<Navigate to="/login" />} />
+        <Route path="/suscripciones" element={<Suscripciones></Suscripciones>}></Route>
 
-
-
-        <Aside></Aside>
-        <div style={{overflow:"hidden",flex:"1"}}>
-          <Header></Header>
-          <Routes>
-            <Route path="/" element={<Home></Home>}></Route>
-
-            <Route path="/login" element={<Login></Login>}></Route>
-
-            <Route path="/register" element={<Register></Register>}></Route>
-            <Route path="*" element={<Navigate to="/login" />} />
-
-            <Route path="/suscripciones" element={<Suscripciones></Suscripciones>}></Route>
-
-          </Routes>
-
-        </div>
-
-      </div>
-
-
+      </Routes>
     </BrowserRouter >
 
 
