@@ -4,7 +4,7 @@ import "../public/styles/index.scss"
 import Home from "./routes/home/home.jsx"
 import Login from "./routes/login/login.jsx"
 import Register from "./routes/register/register.jsx"
-import Suscripciones from "./routes/subscriptions/subscrition.jsx"
+import Suscripciones from "./routes/subscriptions/subscriptions.jsx"
 
 export default function App() {
 
@@ -34,7 +34,7 @@ export default function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="*" element={<Navigate to="/login" />} />
-        <Route path="/suscripciones" element={<Suscripciones></Suscripciones>}></Route>
+        <Route path="/subscription" element={<Suscripciones></Suscripciones>}></Route>
 
       </Routes>
     </BrowserRouter >
