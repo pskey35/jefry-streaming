@@ -100,7 +100,7 @@ function Login() {
             } else if (data?.error) {
                 setMessageLogin({
                     error: true,
-                    message: data.error
+                    message:data.error
                 })
                 setIsLoading(false)
                 return;
@@ -182,7 +182,7 @@ function Login() {
                             <h1 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">Login</h1>
 
                             <label className="block text-sm">
-                                <span className="text-gray-700 dark:text-gray-400">Email</span>
+                                <span className="text-gray-700 dark:text-gray-400">user name</span>
                                 <input
                                     type="email"
                                     onInput={inputUserNameEvent}

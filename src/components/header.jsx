@@ -1,10 +1,10 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 function Header() {
 
     const [isNotificationsMenuOpen, setIsNotificationsMenuOpen] = useState(false)
     const [isProfileMenuOpen, setIsProfileMenuOpen] = useState()
-
+    const dark = false;
     const toggleProfileMenu = () => {
 
     }
@@ -22,12 +22,23 @@ function Header() {
     }
 
 
+
     const toggleTheme = () => {
+        const htmlElement = document.documentElement;
+
+        if (htmlElement.classList.contains('dark')) {
+            htmlElement.classList.remove('dark'); 
+       //     localStorage.setItem('dark', 'false'); 
+        } else {
+            htmlElement.classList.add('dark');
+           // localStorage.setItem('dark', 'true'); 
+        }
 
     }
 
 
-    const dark = false;
+
+
 
     return (
         <header className="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
