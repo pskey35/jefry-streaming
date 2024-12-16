@@ -9,17 +9,28 @@ export default function Subscriptions() {
     const [isLoading, setIsLoading] = useState(true)
 //aqui falta terminar la api
     const [data,setData] = useState([])
-    const [data2,setData2] = useState([])
+
     useEffect(() => {
         const fetchData = async () => {
-            try {
+            try {/*
                 const result = await fetch(`${import.meta.env.VITE_api}/subscriptions/api/v1/list`);
                 const data = await result.json();
-                console.log(data);
-/*
-                const result2 = await fetch(`${import.meta.env.VITE_api}/subscriptions/api/v1/list`)
-                const data2 = await result2.json()
-                console.log(data2)*/
+                console.log(data);*/
+
+                
+        
+               const dataSimulator = {
+                usuario:"juan",
+                cuenta:"juanEsma",
+                perfil:"valles",
+                fecha_inicio: "13 marzo 2024",
+                fecha_vencimiento: "2 diciembre 2024",
+                opciones:true
+               }
+
+
+               setData([dataSimulator])
+
                 setIsLoading(false);
 
 
@@ -34,10 +45,13 @@ export default function Subscriptions() {
     return (
         <div className="w-full overflow-x-auto flex bg-gray-50 h-full">
             <Aside></Aside>
-            <div className="w-full flex flex-col">
+            <div className="w-full flex flex-col items-center flex-[10] ">
                 <Header></Header>
-                <div className="w-full overflow-hidden rounded-3xl shadow-xs flex-1 flex items-center p-8 flex-col">
-                    <div className="w-full overflow-x-autorounded-xl border border-gray-200 rounded-md" >
+                <div className="w-full overflow-hidden rounded-3xl shadow-xs flex-1 flex items-center p-4 flex-col max-w-[100%] overflow-auto">
+                    <div className="w-full overflow-x-autorounded-xl border
+                     border-gray-200 rounded-md max-w-[100%] overflow-auto
+                     lg:max-w-[90%]
+                     " >
                         <table className="w-full whitespace-no-wrap m-auto border border-gray-100 rounded-lg">
                             <thead>
 

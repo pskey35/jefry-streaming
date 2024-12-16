@@ -5,7 +5,7 @@ import Home from "./routes/home/home.jsx"
 import Login from "./routes/login/login.jsx"
 import Register from "./routes/register/register.jsx"
 import Suscripciones from "./routes/subscriptions/subscriptions.jsx"
-
+import Services from "./routes/services/services.jsx"
 export default function App() {
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function App() {
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="*" element={<Navigate to="/login" />} />
         <Route path="/subscription" element={<Suscripciones></Suscripciones>}></Route>
-
+      <Route path="/services" element={<Services></Services>}></Route>
       </Routes>
     </BrowserRouter >
 
