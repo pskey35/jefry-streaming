@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useLocation, Link} from "react-router-dom"
+import { useLocation, Link,useNavigate} from "react-router-dom"
 
 const IconDashboard = () => (
     <svg
@@ -56,9 +56,7 @@ const IconSubscription = () =>
 
 export default function Aside() {
     const [togglePagesMenu, setTooglePagesMenu] = useState()
-
     const [pagesMenuOpen, setPagesMenuOpen] = useState()
-
     const [itemIndex,setItemIndex] = useState(0)
 
 
@@ -84,12 +82,20 @@ export default function Aside() {
 
 
     const location = useLocation();
+    const navigate = useNavigate()
 
 
 
-    const clickItem = (indice) => {
+    const clickItem = (indice,goTo) => {
+
         setItemIndex(indice)
+
+
+        navigate(goTo)
+   
     }
+
+
 
     return (
         <aside className="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0 max-w-[20%]">
@@ -103,7 +109,7 @@ export default function Aside() {
                         asideList.map((dataUnidad, index) => {
 
                             return (
-                                <li className="relative px-6 py-3" onClick={()=>clickItem(index)} key={dataUnidad.id}>
+                                <li className="relative px-6 py-3 cursor-pointer" onClick={()=>clickItem(index,dataUnidad.redirect_to)} key={dataUnidad.id}>
 
                                     {location.pathname === dataUnidad.redirect_to ?
                                      <span
@@ -113,15 +119,15 @@ export default function Aside() {
                                     }
                                    
 
-                                    <Link
+                                    <div
                                         className="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
 
-                                        to={dataUnidad.redirect_to}
+                                        
                                     >
                                         {dataUnidad.icon}
 
                                         <span className="ml-4">{dataUnidad.title}</span>
-                                    </Link>
+                                    </div>
                                 </li>
 
 
