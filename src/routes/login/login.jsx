@@ -100,7 +100,7 @@ function Login() {
             } else if (data?.error) {
                 setMessageLogin({
                     error: true,
-                    message:data.error
+                    message: data.error
                 })
                 setIsLoading(false)
                 return;
@@ -243,20 +243,22 @@ function Login() {
                             </button>
 
                             <p className="mt-4">
-                                <a
-                                    className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
+                                <span
+                                    className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline cursor-pointer"
+
                                     href="./forgot-password.html"
                                 >
                                     Forgot your password?
-                                </a>
+                                </span>
                             </p>
                             <p className="mt-1">
-                                <a
-                                    className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-                                    href="./register"
+                                <span
+                                    className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline cursor-pointer"
+
+                                    onClick={() => navigate("/register")}
                                 >
                                     Create account
-                                </a>
+                                </span>
                             </p>
                         </div>
                     </div>
