@@ -81,14 +81,14 @@ function MenuHeaderMobile() {
     }
     ]
 
-    const clickItem = (index,goTo) =>{
+    const clickItem = (index, goTo) => {
         navigate(goTo)
         alert(indice)
 
     }
 
     return (
-        <div className="menuMobile md:hidden">
+        <div className="menuMobile hidden md:hidden">
             <div className="menuMobile_content pt-6">
                 <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200 mb-6 block " href="/">Windmill</a>
 
@@ -147,8 +147,31 @@ function Header() {
 
     }
 
+    let isOpen = false
+
     const toggleSideMenu = () => {
+        const asideContent = document.querySelector("#root > div > div > div.menuMobile.md\\:hidden > div")
+        const menuMobilBox = document.querySelector(".menuMobile")
         //esto es de mobiles nada mas
+        isOpen = !isOpen
+        if (isOpen) {
+            menuMobilBox.style.opacity = "1"
+                menuMobilBox.style.display ="block"
+            asideContent.style.animation = "fade 400ms ease forwards"
+            return;
+        }
+
+        asideContent.style.animation = "retro 400ms ease forwards"
+
+     
+            menuMobilBox.style.opacity = "0"
+
+        setTimeout(()=>{
+            menuMobilBox.style.display ="none"
+        },300)
+
+
+
     }
 
 
