@@ -74,7 +74,7 @@ export default function Aside() {
     },
     {
         icon: <IconSubscription></IconSubscription>,
-        redirect_to: "/subscription",
+        redirect_to: "/subscriptions",
         title: "Subscription",
         id:3
     }

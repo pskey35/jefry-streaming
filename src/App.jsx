@@ -34,7 +34,7 @@ export default function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="*" element={<Navigate to="/login" />} />
-        <Route path="/subscription" element={<Suscripciones></Suscripciones>}></Route>
+        <Route path="/subscriptions" element={<Suscripciones></Suscripciones>}></Route>
       <Route path="/services" element={<Services></Services>}></Route>
       </Routes>
     </BrowserRouter >
