@@ -1,0 +1,18 @@
+.menuMobile{
+    background:rgba(0, 0, 0, 0.596);
+    width:100%;
+    height: calc(100% - 64px);
+    position: absolute;
+    left: 0;
+    z-index: 100;
+    backdrop-filter: blur(.4px);
+    top: 64px;
+
+    .menuMobile_content{
+        background: white;
+        width: 80%;
+        max-width: 300px;
+        height:100%;
+        max-width:260px;
+    }
+}

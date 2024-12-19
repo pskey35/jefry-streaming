@@ -88,9 +88,8 @@ export default function Aside() {
 
     const clickItem = (indice,goTo) => {
 
+        
         setItemIndex(indice)
-
-
         navigate(goTo)
    
     }
@@ -104,7 +103,6 @@ export default function Aside() {
                     Windmill
                 </a>
                 <ul className="mt-6">
-
                     {
                         asideList.map((dataUnidad, index) => {
 
