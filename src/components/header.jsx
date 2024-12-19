@@ -84,11 +84,25 @@ function MenuHeaderMobile() {
     const clickItem = (index, goTo) => {
         navigate(goTo)
         alert(indice)
+    }
 
+
+
+    let isClicked = false
+    const clickOutside = () =>{
+        if (isClicked) return;
+
+       
+        const menuIcon = document.querySelector("#root > div > div > header > div > button")
+        menuIcon.click()
+        isClicked = true
+        setTimeout(()=>{
+            isClicked = false
+        },300)
     }
 
     return (
-        <div className="menuMobile hidden md:hidden">
+        <div className="menuMobile flex hidden md:hidden "  >
             <div className="menuMobile_content pt-6">
                 <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200 mb-6 block " href="/">Windmill</a>
 
@@ -126,6 +140,9 @@ function MenuHeaderMobile() {
 
                 </ul>
             </div>
+            <div style={{flex:"1"}} onClick={()=> clickOutside()}>
+
+            </div>
         </div>
     )
 }
@@ -156,7 +173,7 @@ function Header() {
         isOpen = !isOpen
         if (isOpen) {
             menuMobilBox.style.opacity = "1"
-                menuMobilBox.style.display ="block"
+                menuMobilBox.style.display ="flex"
             asideContent.style.animation = "fade 400ms ease forwards"
             return;
         }
