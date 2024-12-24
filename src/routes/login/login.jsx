@@ -93,8 +93,13 @@ function Login() {
             if (data?.token) {
 
                 localStorage.setItem("token", data.token)
-                navigate("/")
+              
 
+                //guardamos el user id en local storage para luego usarlo con /subscription 
+                localStorage.setItem("user_id", data.user.id)   
+
+
+                navigate("/")
 
 
             } else if (data?.error) {
