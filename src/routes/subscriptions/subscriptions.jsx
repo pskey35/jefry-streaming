@@ -2,13 +2,14 @@ import { useEffect, useState } from "react"
 import Header from "../../components/header.jsx"
 import Aside from "../../components/aside.jsx"
 
+import DataTable from "react-data-table-component";
 
 export default function Subscriptions() {
 
 
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
     //aqui falta terminar la api
-    const [data, setData] = useState([])
+   // const [data, setData] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -91,12 +92,25 @@ export default function Subscriptions() {
         fetchData();
     }, []);
 
+
+    const data = [
+        { id: 1, name: "Juan Pérez", age: 28, email: "juan@example.com" },
+        { id: 2, name: "Ana García", age: 32, email: "ana@example.com" },
+    ];
+
+
+    const columns = [
+        { name: "Nombre", selector: (row) => row.name },
+        { name: "Edad", selector: (row) => row.age },
+    ];
     return (
         <div className="w-full overflow-x-auto flex bg-gray-50 h-full">
             <Aside></Aside>
             <div className="w-full flex flex-col items-center flex-[10] ">
                 <Header></Header>
                 <div className="w-full overflow-hidden rounded-3xl shadow-xs flex-1 flex items-center p-4 flex-col max-w-[100%] overflow-auto relative">
+
+
 
 
                     {isLoading ?
@@ -107,71 +121,24 @@ export default function Subscriptions() {
                             <div className="w-full overflow-x-autorounded-xl border
     border-gray-200 rounded-md max-w-[100%] overflow-auto
     lg:max-w-[90%]
+
+
+
     " >
-                                <table className="w-full whitespace-no-wrap m-auto border border-gray-100 rounded-lg">
-                                    <thead>
-
-                                        <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                                            <th className="px-4 py-3">Usuario</th>
-                                            <th className="px-4 py-3">Cuenta</th>
-                                            <th className="px-4 py-3">Perfil</th>
-                                            <th className="px-4 py-3">Fecha de inicio</th>
-                                            <th className="px-4 py-3">Fecha de vencimiento</th>
-                                            <th className="px-4 py-3">Opciones</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
 
 
-                                        {data && data.map((dataUnidad, index) => {
-                                            return (
-
-                                                <tr className="text-gray-700 dark:text-gray-400">
-                                                    <td className="px-4 py-3">
-                                                        <div className="flex items-center text-sm">
-
-                                                            <div>
-                                                                <p className="font-semibold">
-                                                                    {dataUnidad.user.username}
-
-
-                                                                </p>
-
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td className="px-4 py-3 text-sm">
-                                                        ${dataUnidad.profile.cost}
-                                                    </td>
-                                                    <td className="px-4 py-3 text-xs">
-                                                        <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                                                            Approved
-                                                        </span>
-                                                    </td>
-
-                                                    <td className="px-4 py-3 text-sm">
-                                                        {dataUnidad.date_start}
-
-                                                    </td>
-                                                    <td className="px-4 py-3 text-sm">
-                                                        {dataUnidad.date_expiration}
-
-                                                    </td>
-                                                    <td className="px-4 py-3 text-sm">6/10/2020</td>
-
-
-                                                </tr>
-                                            )
-                                        })
+                                <DataTable
+                                    title="Tus subscripciones"
+                                    columns={columns}
+                                    data={data}
+                                    pagination // Habilitar paginación
+                                    selectableRows // Habilitar selección de filas
+                                />
+                            
 
 
 
-                                        }
 
-
-                                    </tbody>
-                                </table>
                             </div>
                             {
                                 /*
@@ -179,7 +146,7 @@ export default function Subscriptions() {
                                 */
 
                             }
-                           
+
                         </>
                     }
 
