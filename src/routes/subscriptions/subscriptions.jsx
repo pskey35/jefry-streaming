@@ -7,78 +7,62 @@ import DataTable from "react-data-table-component";
 export default function Subscriptions() {
 
 
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
+    const [data, setData] = useState([])
+
     //aqui falta terminar la api
-   // const [data, setData] = useState([])
+    // const [data, setData] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await fetch(`${import.meta.env.VITE_api}/subscriptions/api/v1/list`);
-                const data = await result.json();
+
+                const user_id = localStorage.getItem("user_id");
+
+            
+                 const result = await fetch(`${import.meta.env.VITE_api}/subscriptions/api/v1/list/`, {
+                     method: "POST",
+                     headers: {
+                        'Content-Type': 'application/json', // Cambia según lo que requiera la API
+                    },
+                     body: JSON.stringify({ user_id: user_id })
+                 });
+ 
+                 const data = await result.json();
 
 
-                console.log(data)
-
-                /*
-                                const dataSimulator = [
-                                    {
-                                        "id": 48,
-                                        "user": {
-                                            "id": 10,
-                                            "username": "Sebasstreaming",
-                                            "email": "",
-                                            "password": "pbkdf2_sha256$870000$D1K1tlnJjX4txYRH84bCAj$WspOLYaM4KLhvSsv2La5LEhR+0H1B2lZKxKjcbQvx2s="
-                                        },
-                                        "account": null,
-                                        "profile": {
-                                            "id": 31,
-                                            "availability": false,
-                                            "accountID": null,
-                                            "name": "PROFILE",
-                                            "number": "(1)",
-                                            "pin": 1111,
-                                            "cost": "0.50",
-                                            "date_created": "2024-12-18T21:18:39.115744Z",
-                                            "date_updated": "2024-12-24T02:37:17.569769Z",
-                                            "service": 13,
-                                            "account": 7
-                                        },
-                                        "date_start": "2024-12-18",
-                                        "date_expiration": "2025-01-17",
-                                        "date_created": "2024-12-18T22:01:54.940939Z",
-                                        "date_updated": "2024-12-18T22:01:54.940939Z"
-                                    },
-                                    {
-                                        "id": 49,
-                                        "user": {
-                                            "id": 11,
-                                            "username": "pablo123",
-                                            "email": "",
-                                            "password": "pbkdf2_sha256$870000$3UDjZJWvLIBn3C6uQhzH3c$VYOzn9EweAyrUO+akUw7jiAz5V9ifZUfVFnTb0VtTwg="
-                                        },
-                                        "account": null,
-                                        "profile": {
-                                            "id": 32,
-                                            "availability": false,
-                                            "accountID": null,
-                                            "name": "PROFILE",
-                                            "number": "(2)",
-                                            "pin": 2222,
-                                            "cost": "0.50",
-                                            "date_created": "2024-12-18T21:18:39.123752Z",
-                                            "date_updated": "2024-12-24T02:37:17.598615Z",
-                                            "service": 13,
-                                            "account": 7
-                                        },
-                                        "date_start": "2024-12-24",
-                                        "date_expiration": "2025-01-23",
-                                        "date_created": "2024-12-24T02:37:17.483795Z",
-                                        "date_updated": "2024-12-24T02:37:17.483830Z"
-                                    }
-                                ]
-                */
-
+                
+/*
+                const dataSimulator = [
+                    {
+                        id: 48,
+                        user: {
+                            id: 10,
+                            username: "Sebasstreaming",
+                            email: "",
+                            password: "pbkdf2_sha256$870000$D1K1tlnJjX4txYRH84bCAj$WspOLYaM4KLhvSsv2La5LEhR+0H1B2lZKxKjcbQvx2s="
+                        },
+                        account: null,
+                        profile: {
+                            id: 31,
+                            availability: false,
+                            accountID: null,
+                            name: "PROFILE",
+                            number: "(1)",
+                            pin: 1111,
+                            cost: "0.50",
+                            date_created: "2024-12-18T21:18:39.115744Z",
+                            date_updated: "2024-12-24T14:42:48.420611Z",
+                            service: 13,
+                            account: 7
+                        },
+                        date_start: "2024-12-18",
+                        date_expiration: "2025-01-17",
+                        date_created: "2024-12-18T22:01:54.940939Z",
+                        date_updated: "2024-12-18T22:01:54.940939Z"
+                    }
+                ];
+*/
 
                 setData(data)
                 setIsLoading(false);
@@ -92,30 +76,32 @@ export default function Subscriptions() {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        if (isLoading == false) {
+            console.log("asssssssssssss")
 
-    const data = Array.from({ length: 50 }, (_, index) => ({
-        id: index + 1,
-        usuario: `usuario${index + 1}`,
-        cuenta: `$${(Math.random() * 10).toFixed(2)}`,
-        perfil: "Approved",
-        fechaInicio: `2024-12-${String(Math.floor(Math.random() * 30) + 1).padStart(2, "0")}`,
-        fechaVencimiento: `2025-01-${String(Math.floor(Math.random() * 30) + 1).padStart(2, "0")}`,
-        opciones: `${Math.floor(Math.random() * 12) + 1}/10/2020`,
-    }));
-    
+
+            //    setFilter(item => item.user.username.toLoweCase().includes(filter.toLocaleLowerCase))
+
+        }
+
+    }, [data])
+
+   
+
     const columns = [
         {
-            name: "USUARIO",
-            selector: (row) => row.usuario,
-            sortable: true,
+            name: "SERVICIO",
+            selector: (row) => row.user.username,
+
         },
         {
-            name: "CUENTA",
-            selector: (row) => row.cuenta,
-            sortable: true,
+            name: "CORREO",
+            selector: (row) => row.user.email,
+
         },
         {
-            name: "PERFIL",
+            name: "CONTRASENA",
             selector: (row) => (
                 <span
                     style={{
@@ -125,27 +111,33 @@ export default function Subscriptions() {
                         borderRadius: "5px",
                     }}
                 >
-                    {row.perfil}
+                    Aproved
                 </span>
             ),
-            sortable: true,
+
         },
         {
-            name: "FECHA DE INICIO",
-            selector: (row) => row.fechaInicio,
-            sortable: true,
+            name: "PERFIL",
+            selector: (row) => "profile " + row.profile.number,
+
         },
         {
+            name: "PIN",
+            selector: (row) => row.profile.pin,
+
+        },
+        {
+            name: "FECHA DE COMPRA",
+            selector: (row) => row.opciones,
+        },{
             name: "FECHA DE VENCIMIENTO",
-            selector: (row) => row.fechaVencimiento,
-            sortable: true,
-        },
-        {
+            selector: (row) => row.opciones,
+        },{
             name: "OPCIONES",
             selector: (row) => row.opciones,
         },
     ];
-    
+
     return (
         <div className="w-full overflow-x-auto flex bg-gray-50 h-full">
             <Aside></Aside>
@@ -170,14 +162,15 @@ export default function Subscriptions() {
     " id="containerTable">
 
 
+
                                 <DataTable
                                     title="Tus subscripciones"
                                     columns={columns}
                                     data={data}
                                     pagination // Habilitar paginación
-                                    selectableRows // Habilitar selección de filas
+                                // selectableRows // Habilitar selección de filas
                                 />
-                            
+
 
 
 
