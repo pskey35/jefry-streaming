@@ -76,7 +76,7 @@ function MenuHeaderMobile() {
     {
         icon: <IconSubscription></IconSubscription>,
         redirect_to: "/subscriptions",
-        title: "Subscription",
+        title: "Subscriptions",
         id: 3
     }
     ]
