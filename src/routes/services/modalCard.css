@@ -43,7 +43,7 @@
         opacity: 0;
         transform: scale(.8);
     }
-}   
+}
 
 
 
@@ -91,11 +91,11 @@
 .modalBox {
     display: flex;
     flex-direction: column;
-    align-items:flex-start;
+    align-items: flex-start;
     justify-self: center;
     margin-top: 10%;
     margin-bottom: 10%;
-    flex:1;
+    flex: 1;
 
 }
 
@@ -137,18 +137,51 @@
 
 @media(max-width:800px) {
 
-    .modalBox{
+    .modalBox {
         align-items: center;
-       
+
     }
 
-    .imageModal{
-        width:150px;
-        height:150px;
+    .imageModal {
+        width: 150px;
+        height: 150px;
     }
 
     .descriptionModal.flex-1.text-center.color-white.md\:bg->div:nth-child(3) {
         align-self: flex-end;
         margin-top: 2em;
+    }
+}
+
+
+
+
+@media (max-width:800px) {
+    .cardContainer {
+        padding: 1em
+    }
+}
+
+
+.spinner {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: radial-gradient(farthest-side, #9333ea 94%, #0000) top/9px 9px no-repeat,
+        conic-gradient(#0000 30%, #9333ea);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 9px), #000 0);
+    animation: spinner-c7wet2 1s infinite linear;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    bottom: 0;
+    right: 0;
+
+}
+
+@keyframes spinner-c7wet2 {
+    100% {
+        transform: rotate(1turn);
     }
 }
