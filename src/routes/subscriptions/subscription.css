@@ -15,15 +15,15 @@
 
 
 
-/* Scrollbar para navegadores basados en WebKit */
+
 #containerTable::-webkit-scrollbar {
     width: 10px;
-    /* Ancho del scrollbar vertical */
+
     height: 10px;
-    /* Altura del scrollbar horizontal */
+   
 }
 
-/* Fondo del scrollbar */
+
 #containerTable::-webkit-scrollbar-track {
     background: #f0f0f0;
 
@@ -93,13 +93,13 @@ input[type="checkbox"] {
     transition: all 0.2s ease-in-out;
   }
 
-  /* Estado checked */
+
   input[type="checkbox"]:checked {
     background-color: rgb(253, 241, 255);
     border-color: rgb(253, 241, 255);
   }
 
-  /* Icono de marca (check) */
+
   input[type="checkbox"]:checked::after {
     content: '✔';
     color: white;
@@ -111,13 +111,12 @@ input[type="checkbox"] {
     transform: translate(-50%, -50%);
   }
 
-  /* Hover */
+  
   input[type="checkbox"]:hover {
     border-color: #ffd4fd;
     box-shadow: 0 0 5px rgba(255, 223, 255, 0.2);
   }
 
-  /* Focus */
   input[type="checkbox"]:focus {
     outline: 2px solid rgb(241, 164, 255);
   }
