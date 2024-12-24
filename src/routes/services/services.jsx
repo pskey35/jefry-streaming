@@ -7,6 +7,7 @@ import "./modalCard.css"
 const ServicesContext = createContext()
 
 function Main() {
+    //const [dataSimulated, setDataSimulated] = useState([])
 
     const { setOpenModal, setDataModal } = useContext(ServicesContext)
     const dataSimulated = [
@@ -36,11 +37,20 @@ function Main() {
 
 
     const clickCard = (dataModal) => {
-
         setOpenModal(true)
         setDataModal(dataModal)
-
     }
+
+
+    useEffect(() => {
+
+        fetch(`${import.meta.env.VITE_api}/services/api/v1/services/`)
+            .then(e => e.json())
+            .then(data => {
+                //  setDataSimulated(data)
+            })
+
+    }, [])
 
 
     return (
@@ -151,6 +161,17 @@ function ModalCard() {
 
     }, [openModal])
 
+
+    const clickBuying = () => {
+
+        //aqui se saca el user_id del localstorage y se envia al backend para que se haga la compra 
+        //de la cuenta o perfil
+        const user_id = localStorage.getItem("user_id")
+
+        //en cuanto al service id se saca del fetch /
+
+    }
+
     return (
         <div className="modalCard w-full h-full fixed z-[1000] flex justify-center items-center"
             data-card="modalCard"
@@ -177,32 +198,25 @@ function ModalCard() {
 
                 <div className="modalBox flex-col items-center justify-center flex-1t">
 
-                    <div className="imageModal max-h-[215px]">
-                        <img src={dataModal.image}></img>
-                    </div>
-
                     <div className="descriptionModal flex-1 text-center color-white md:bg-">
                         <div>
-                            <span style={{ fontWeight: "700" }}>{dataModal.name}</span>
+                            <span style={{ color: "black", fontWeight: "700", fontSize:"14px"}}>
+                                Detalles de:
+                            </span>
+                            <span style={{marginLeft:"10px",fontSize:"25px"}}>
+                                {dataModal.name}
+                            </span>
                         </div>
                         <div>
                             {dataModal.description}
                         </div>
-                        <div>
-                            <div style={{ color: "#27cb27", fontWeight: "700" }}>
-                                <span style={{ fontSize: "30px" }}>
-                                    $ {dataModal.price}
-                                </span>
-
-
-                            </div>
+                        <div className="bg-purple-300 text-white pt-3 pb-3 pr-16 pl-16 mt-8 rounded-md cursor-pointer hover:bg-purple-500 transition transition-color duration-100" onClick={clickCloseModal}>    
+                            Cerrar
                         </div>
+
                     </div>
                 </div>
-                <div className="buttonModalBuy w-full bg-blue-300 rounded rounded-xl color-white text-center p-4">
-                    Comprar
-                </div>
-
+   
 
 
             </div>

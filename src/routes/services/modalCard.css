@@ -43,7 +43,7 @@
         opacity: 0;
         transform: scale(.8);
     }
-}   
+}
 
 
 
@@ -151,4 +151,19 @@
         align-self: flex-end;
         margin-top: 2em;
     }
+
+
+
+    .descriptionModal{
+        padding: 0;
+        width:100%;
+    }
+
+    .descriptionModal > div:nth-child(1){
+        align-self:flex-start;
+    }
+
+
+
+ 
 }

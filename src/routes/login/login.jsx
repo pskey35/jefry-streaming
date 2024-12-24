@@ -92,8 +92,13 @@ function Login() {
 
             if (data?.token) {
 
+
                 localStorage.setItem("token", data.token)
+
+                //guardamos su user id...
+                localStorage.setItem("user_id", data.user.id)
                 navigate("/")
+
 
 
 
