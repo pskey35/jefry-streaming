@@ -176,6 +176,7 @@ function ModalCard() {
             user_id: parseInt(user_id),
             service_id: dataModal.id
         }
+        console.log("esto se envia",body)
 
         const resu = await fetch(`${import.meta.env.VITE_api}/subscriptions/api/v1/create/`, {
             method: "POST",
