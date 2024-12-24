@@ -8,54 +8,69 @@ const ServicesContext = createContext()
 
 function Main() {
 
+    const [loaderService, setLoaderService] = useState(true)
     const { setOpenModal, setDataModal } = useContext(ServicesContext)
-    const dataSimulated = [
-        {
-            "id": 8,
-            "image": "https://djangobackendonlinestreaming.pythonanywhere.com/media/services/star_1aNXeNT.png",
-            "name": "STAR+ (Cuenta)",
-            "description": "xxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            "price": "7.00",
-            "type": "Cuenta",
-            "num_profiles": 7,
-            "date_created": "2024-11-12T01:18:59.744284Z",
-            "date_updated": "2024-11-12T01:18:59.744284Z"
-        },
-        {
-            "id": 9,
-            "image": "https://djangobackendonlinestreaming.pythonanywhere.com/media/services/star_RTs895t.png",
-            "name": "STAR+ (Perfil)",
-            "description": "xdddddddddddddddddd",
-            "price": "1.00",
-            "type": "Perfil",
-            "num_profiles": 0,
-            "date_created": "2024-11-13T20:32:44.009218Z",
-            "date_updated": "2024-11-13T20:32:44.009218Z"
-        }
-    ]
+    /* const dataSimulated = [
+         {
+             "id": 8,
+             "image": "https://djangobackendonlinestreaming.pythonanywhere.com/media/services/star_1aNXeNT.png",
+             "name": "STAR+ (Cuenta)",
+             "description": "xxxxxxxxxxxxxxxxxxxxxxxxxxx",
+             "price": "7.00",
+             "type": "Cuenta",
+             "num_profiles": 7,
+             "date_created": "2024-11-12T01:18:59.744284Z",
+             "date_updated": "2024-11-12T01:18:59.744284Z"
+         },
+         {
+             "id": 9,
+             "image": "https://djangobackendonlinestreaming.pythonanywhere.com/media/services/star_RTs895t.png",
+             "name": "STAR+ (Perfil)",
+             "description": "xdddddddddddddddddd",
+             "price": "1.00",
+             "type": "Perfil",
+             "num_profiles": 0,
+             "date_created": "2024-11-13T20:32:44.009218Z",
+             "date_updated": "2024-11-13T20:32:44.009218Z"
+         }
+     ]
+ */
 
+
+    const [dataCards, setDataCards] = useState([])
 
     const clickCard = (dataModal) => {
-
         setOpenModal(true)
         setDataModal(dataModal)
-
     }
 
+
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_api}/services/api/v1/services/`)
+            .then(response => response.json())
+            .then(data => {
+                setDataCards(data)
+                setLoaderService(false)
+            })
+    }, [])
 
     return (
         <>
             <h2 className="text-[2em] p-8 pb-0 font-bold" >Services</h2>
             <div className="
+            cardContainer
         flex flex-1 flex gap-8 p-10 flex-col 
         sm:flex-row
-
+        relative
         ">
 
                 {
-                    dataSimulated && dataSimulated.map((dataUnidad, index) => {
-                        return (
-                            <div className="w-[100%] 
+
+
+                    loaderService ? <div className="spinner"></div>
+                        : dataCards && dataCards.map((dataUnidad, index) => {
+                            return (
+                                <div className="w-[100%] 
                         max-w-[450px] bg-gray-100 
                         max-h-[max-content]
                         p-4 h-auto h-[max-content]
@@ -63,51 +78,53 @@ function Main() {
                         rounded-xl flex-1 flex flex-col
                         cursor-pointer
                         hover:scale-105 transform transition duration-300 ease
+
                         "
+                        key={dataUnidad.id}
 
-                                onClick={() => clickCard(dataUnidad)}
-                            >
+                                    onClick={() => clickCard(dataUnidad)}
+                                >
 
-                                <div className="flex justify-evenly items-start mb-4">
-                                    <div className="h-24 w-24">
-                                        <img src={dataUnidad.image} className="w-full h-full  object-contain"></img>
-                                    </div>
-                                    <div className="pt-2 pl-2">
-                                        <span style={{ fontWeight: "700" }}>{dataUnidad.name}</span>
-                                        <div className="break-all">
-                                            {dataUnidad.description.length > 50 ? dataUnidad.description.slice(0, 50) + "..." : dataUnidad.description}
+                                    <div className="flex justify-evenly items-start mb-4">
+                                        <div className="h-24 w-24">
+                                            <img src={dataUnidad.image} className="w-full h-full  object-contain"></img>
+                                        </div>
+                                        <div className="pt-2 pl-2">
+                                            <span style={{ fontWeight: "700" }}>{dataUnidad.name}</span>
+                                            <div className="break-all">
+                                                {dataUnidad.description.length > 50 ? dataUnidad.description.slice(0, 50) + "..." : dataUnidad.description}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
 
-                                <div className="h-[50px]">
-                                    <div className="w-full
+                                    <div className="h-[50px]">
+                                        <div className="w-full
                                 cursor-pointer
                                  bg-blue-200 p-2 rounded rounded-xl 
                                  hover:bg-blue-400
                                  flex justify-evenly items:center" >
 
-                                        <span
+                                            <span
 
 
-                                            style={{
-                                                color: "white",
-                                                fontSize: "16px",
-                                                display: "grid",
-                                                placeItems: "center",
-                                                fontWeight: "700"
-                                            }}>
+                                                style={{
+                                                    color: "white",
+                                                    fontSize: "16px",
+                                                    display: "grid",
+                                                    placeItems: "center",
+                                                    fontWeight: "700"
+                                                }}>
 
-                                            Comprar
-                                        </span>
+                                                Comprar
+                                            </span>
+
+                                        </div>
 
                                     </div>
-
                                 </div>
-                            </div>
-                        )
-                    })
+                            )
+                        })
                 }
             </div>
         </>
@@ -151,6 +168,26 @@ function ModalCard() {
 
     }, [openModal])
 
+
+    const clickBuying = async () => {
+        const user_id = localStorage.getItem("user_id")
+
+        const body = {
+            user_id: parseInt(user_id),
+            service_id: dataModal.id
+        }
+
+        const resu = await fetch(`${import.meta.env.VITE_api}/subscriptions/api/v1/create/`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+        const response = await resu.json()
+        console.log(response)
+    }
+
     return (
         <div className="modalCard w-full h-full fixed z-[1000] flex justify-center items-center"
             data-card="modalCard"
@@ -186,6 +223,7 @@ function ModalCard() {
                             <span style={{ fontWeight: "700" }}>{dataModal.name}</span>
                         </div>
                         <div>
+
                             {dataModal.description}
                         </div>
                         <div>
@@ -199,7 +237,7 @@ function ModalCard() {
                         </div>
                     </div>
                 </div>
-                <div className="buttonModalBuy w-full bg-blue-300 rounded rounded-xl color-white text-center p-4">
+                <div className="buttonModalBuy w-full bg-blue-300 rounded rounded-xl color-white text-center p-4" onClick={clickBuying}>
                     Comprar
                 </div>
 
@@ -231,5 +269,4 @@ export default function Services() {
         </ServicesContext.Provider>
     )
 }
-
 
