@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Header from "../../components/header.jsx"
 import Aside from "../../components/aside.jsx"
-
+import "./subscription.css"
 import DataTable from "react-data-table-component";
 
 export default function Subscriptions() {
@@ -93,16 +93,59 @@ export default function Subscriptions() {
     }, []);
 
 
-    const data = [
-        { id: 1, name: "Juan Pérez", age: 28, email: "juan@example.com" },
-        { id: 2, name: "Ana García", age: 32, email: "ana@example.com" },
-    ];
-
-
+    const data = Array.from({ length: 50 }, (_, index) => ({
+        id: index + 1,
+        usuario: `usuario${index + 1}`,
+        cuenta: `$${(Math.random() * 10).toFixed(2)}`,
+        perfil: "Approved",
+        fechaInicio: `2024-12-${String(Math.floor(Math.random() * 30) + 1).padStart(2, "0")}`,
+        fechaVencimiento: `2025-01-${String(Math.floor(Math.random() * 30) + 1).padStart(2, "0")}`,
+        opciones: `${Math.floor(Math.random() * 12) + 1}/10/2020`,
+    }));
+    
     const columns = [
-        { name: "Nombre", selector: (row) => row.name },
-        { name: "Edad", selector: (row) => row.age },
+        {
+            name: "USUARIO",
+            selector: (row) => row.usuario,
+            sortable: true,
+        },
+        {
+            name: "CUENTA",
+            selector: (row) => row.cuenta,
+            sortable: true,
+        },
+        {
+            name: "PERFIL",
+            selector: (row) => (
+                <span
+                    style={{
+                        backgroundColor: "#d4edda",
+                        color: "#155724",
+                        padding: "3px 8px",
+                        borderRadius: "5px",
+                    }}
+                >
+                    {row.perfil}
+                </span>
+            ),
+            sortable: true,
+        },
+        {
+            name: "FECHA DE INICIO",
+            selector: (row) => row.fechaInicio,
+            sortable: true,
+        },
+        {
+            name: "FECHA DE VENCIMIENTO",
+            selector: (row) => row.fechaVencimiento,
+            sortable: true,
+        },
+        {
+            name: "OPCIONES",
+            selector: (row) => row.opciones,
+        },
     ];
+    
     return (
         <div className="w-full overflow-x-auto flex bg-gray-50 h-full">
             <Aside></Aside>
@@ -124,7 +167,7 @@ export default function Subscriptions() {
 
 
 
-    " >
+    " id="containerTable">
 
 
                                 <DataTable
