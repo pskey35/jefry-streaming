@@ -16,6 +16,7 @@
 
 
 
+
 #containerTable::-webkit-scrollbar {
     width: 10px;
 
@@ -39,14 +40,14 @@
 
 }
 
-/* Hover sobre el scrollbar */
+
 #containerTable::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(45deg, #ba79ff, #7dacff);
     cursor: pointer;
-    /* Cambia el degradado */
+    
 }
 
-/* Scrollbar horizontal (opcional) */
+/
 #containerTable::-webkit-scrollbar-thumb:horizontal {
     background: linear-gradient(45deg, #6a11cb, #2575fc);
 }
@@ -69,6 +70,8 @@
 #containerTable>div.sc-eauhAA.bzRuyo.rdt_TableHeader>div {
     font-weight: 700;
 }
+
+
 
 /*
 #pagination-next-page:hover{

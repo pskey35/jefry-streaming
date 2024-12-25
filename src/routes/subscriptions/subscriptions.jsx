@@ -4,6 +4,9 @@ import Aside from "../../components/aside.jsx"
 import "./subscription.css"
 import DataTable from "react-data-table-component";
 
+
+
+
 export default function Subscriptions() {
 
 
@@ -76,8 +79,12 @@ export default function Subscriptions() {
         };
 
         fetchData();
-    }, []);
 
+
+        //tenemos que verificar que ese token es valido 
+        const token = localStorage.getItem("token")
+        
+    }, []);
 
 
 
@@ -86,16 +93,16 @@ export default function Subscriptions() {
             name: "SERVICIO",
             selector: (row) => (
 
-                <div style={{display:"flex",flexDirection:"column",alignItems:"center",padding:"10px 0"}}>
+                <div style={{display:"flex",flexDirection:"column",alignItems:"flex-start",padding:"10px 0"}}>
                     <span className="mr-2">
                         <img
-                            src={`https://djangobackendonlinestreaming.pythonanywhere.com/${row.profile.service.image}`}
+                            src={`https://djangobackendonlinestreaming.pythonanywhere.com/${row?.profile?.service?.image || row?.account?.service?.image}`}
                             alt="Servicio"
                             style={{ width: "30px" }}
                         />
                     </span>
                     <span>
-                        {row.profile.service.name}
+                        {row?.profile?.service?.name || row?.account?.name}
 
                     </span>
                 </div>
@@ -105,7 +112,7 @@ export default function Subscriptions() {
         },
         {
             name: "CORREO",
-            selector: (row) => row.user.email,
+            selector: (row) =>    row?.profile?.account?.email || row?.account?.email , //row?.user?.email,
 
         },
         {
@@ -119,19 +126,19 @@ export default function Subscriptions() {
                         borderRadius: "5px",*/
                     }}
                 >
-                    {row.user.password}
+                    {row?.user?.password}
                 </span>
             ),
 
         },
         {
             name: "PERFIL",
-            selector: (row) => "profile " + row.profile.number,
+            selector: (row) => "profile " + row?.profile?.number,
 
         },
         {
             name: "PIN",
-            selector: (row) => row.profile.pin,
+            selector: (row) => row?.profile?.pin,
 
         },
         {
