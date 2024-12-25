@@ -37,22 +37,7 @@ export default function Subscriptions() {
         fetchData();
     }, []);
 
-    useEffect(() => {
-        // Filtrar los datos en función del término de búsqueda
-        const filtered = data.filter((item) => (
-            item?.profile?.service?.name?.toLowerCase().replace(/\s+/g, "").includes(searchTerm.toLowerCase().replace(/\s+/g, "")) ||
-            item?.account?.name?.toLowerCase().replace(/\s+/g, "").includes(searchTerm.toLowerCase().replace(/\s+/g, "")) ||
-            item?.profile?.account?.email?.toLowerCase().replace(/\s+/g, "").includes(searchTerm.toLowerCase().replace(/\s+/g, "")) ||
-            item?.account?.email?.toLowerCase().replace(/\s+/g, "").includes(searchTerm.toLowerCase().replace(/\s+/g, "")) ||
-            item?.user?.password?.toLowerCase().replace(/\s+/g, "").includes(searchTerm.toLowerCase().replace(/\s+/g, "")) ||
-            item?.profile?.number?.toString().replace(/\s+/g, "").includes(searchTerm.replace(/\s+/g, "")) ||
-            item?.profile?.pin?.toString().replace(/\s+/g, "").includes(searchTerm.replace(/\s+/g, "")) ||
-            item.date_start.replace(/\s+/g, "").includes(searchTerm.replace(/\s+/g, "")) ||
-            item.date_expiration.replace(/\s+/g, "").includes(searchTerm.replace(/\s+/g, ""))
-        ));
-
-        setFilteredData(filtered);
-    }, [searchTerm, data]);
+   
 
     useEffect(() => {
         if (!isLoading) {
@@ -127,17 +112,43 @@ export default function Subscriptions() {
                             <table id="tabla" className="display">
                                 <thead>
                                     <tr>
-                                        <th>Nombre</th>
+                                        <th>Servicio</th>
                                         <th>Correo</th>
-                                        <th>Teléfono</th>
+                                        <th>Contrasena</th>
+                                        <th>Perfil</th>
+                                        <th>Pin</th>
+                                        <th>Fecha de compra</th>
+                                        <th>Fecha de vencimiento</th>
+                                        <th>Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {filteredData.map((item, index) => (
+                                    {data && data.map((item, index) => (
                                         <tr key={index}>
-                                            <td>{item?.profile?.service?.name || item?.account?.name}</td>
+
+                                            <td>
+                                                <div className="flex flex-row items-center">
+                                                    <img
+                                                        src={`https://djangobackendonlinestreaming.pythonanywhere.com/${item?.profile?.service?.image || item?.account?.service?.image}`}
+                                                        alt="Servicio"
+                                                        style={{ width: "30px" }}
+                                                    />
+                                                      <span>
+                                                    {item?.profile?.service?.name || item?.account?.name}
+                                                </span>
+                                                </div>
+                                              
+
+
+                                            </td>
                                             <td>{item?.profile?.account?.email || item?.account?.email}</td>
+                                            <td>{item?.user?.password}</td>
                                             <td>{item?.profile?.number}</td>
+                                            <td>{item?.profile?.pin}</td>
+                                            <td>{item.date_start}</td>
+                                            <td>{item?.date_expiration}</td>
+                                            <td>opciones...</td>
+
                                         </tr>
                                     ))}
                                 </tbody>
