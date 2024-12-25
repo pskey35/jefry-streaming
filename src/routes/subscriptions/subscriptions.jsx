@@ -107,17 +107,19 @@ export default function Subscriptions() {
             <div className="w-full flex flex-col items-center flex-[10]">
                 <Header />
                 <div className="w-full overflow-hidden rounded-3xl shadow-xs flex-1 flex items-center p-4 flex-col max-w-[100%] relative">
-                    <input
-                        type="text"
-                        placeholder="Buscar..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="mb-4 p-2 border border-gray-300 rounded"
-                    />
+
                     {isLoading ? (
                         <div className="spinner"> </div>
                     ) : (
                         <div className="w-full overflow-x-auto rounded-xl border border-gray-200 rounded-md max-w-[100%] lg:max-w-[90%]" id="containerTable">
+                            <input
+                                type="text"
+                            
+                                placeholder="Buscar en tabla..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                className="ml-2 mb-4 p-2 border border-gray-300 rounded"
+                            />
                             <DataTable
                                 title="Tus subscripciones"
                                 columns={columns}

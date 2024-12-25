@@ -15,12 +15,19 @@
 */
 
 
-#containerTable > div.sc-eUlrpB.hZZlND{
-    /*max-height:65%;*/
-    max-height:16000px;
-    height:65%;
-    overflow:auto !important;
+#containerTable>div.sc-eUlrpB.hZZlND {
+    max-height: 1600px;
+    height: 65%;
 
+    overflow: auto !important;
+
+    background: white;
+
+}
+
+
+#containerTable {
+    height: 100%;
 }
 
 /*
@@ -30,14 +37,14 @@
     overflow-y:auto !important;
 }*/
 
-#containerTable > div.sc-eUlrpB.hZZlND::-webkit-scrollbar {
+#containerTable>div.sc-eUlrpB.hZZlND::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 
 }
 
 
-#containerTable > div.sc-eUlrpB.hZZlND::-webkit-scrollbar-track {
+#containerTable>div.sc-eUlrpB.hZZlND::-webkit-scrollbar-track {
     background: #f0f0f027;
 
     border-radius: 5px;
@@ -45,7 +52,7 @@
 }
 
 
-#containerTable > div.sc-eUlrpB.hZZlND::-webkit-scrollbar-thumb {
+#containerTable>div.sc-eUlrpB.hZZlND::-webkit-scrollbar-thumb {
     background: linear-gradient(45deg, #ba79ff63, #7dadff59);
     border-radius: 5px;
     border: 1px solid #f0f0f0;
@@ -53,13 +60,13 @@
 }
 
 
-#containerTable > div.sc-eUlrpB.hZZlND::-webkit-scrollbar-thumb:hover {
+#containerTable>div.sc-eUlrpB.hZZlND::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(45deg, #ba79ff98, #7dadff60);
     cursor: pointer;
-    
+
 }
 
-#containerTable > div.sc-eUlrpB.hZZlND::-webkit-scrollbar-thumb:horizontal {
+#containerTable>div.sc-eUlrpB.hZZlND::-webkit-scrollbar-thumb:horizontal {
     background: linear-gradient(45deg, #6b11cb54, #2574fc81);
 }
 
@@ -139,21 +146,33 @@ input[type="checkbox"]:focus {
 
 
 
-@media (min-width:770px) and (max-width:900px){
-    #containerTable{
-        width:595px
+@media (min-width:770px) and (max-width:900px) {
+    #containerTable {
+        width: 595px
     }
 }
 
 
-@media (min-width:901px) and (max-width:1200px){
-    #containerTable{
-        width:700px;
+@media (min-width:901px) and (max-width:1200px) {
+    #containerTable {
+        width: 700px;
     }
 }
 
-@media (min-width:1201px) and (max-width:1800px){
-    #containerTable{
-        width:1075px;
+@media (min-width:1201px) and (max-width:1800px) {
+    #containerTable {
+        width: 1075px;
     }
+}
+
+
+#containerTable > input{
+    outline:none;
+    border:none;
+    margin-top:16px;
+}
+
+#containerTable > input:focus{
+    outline:2px solid #faf9ff;
+
 }
