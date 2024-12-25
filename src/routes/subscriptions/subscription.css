@@ -80,7 +80,9 @@
 #containerTable {
     border: none;
     outline: 2px solid #faf9ff;
-
+    background-color: #f9f9ff;
+    border-radius: 10px;
+    padding: 20px;
 }
 
 
@@ -174,5 +176,87 @@ input[type="checkbox"]:focus {
 
 #containerTable > input:focus{
     outline:2px solid #faf9ff;
+}
 
+
+tabl theader{
+    font-size:13px;
+}
+
+table tbody{
+    font-size:13px;
+}
+
+/* DataTable Styles */
+#containerTable table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Arial', sans-serif;
+}
+
+#containerTable thead {
+    background-color: #6b11cb;
+    color: white;
+    font-size: 14px;
+    text-align: left;
+}
+
+#containerTable thead th {
+    padding: 12px;
+}
+
+#containerTable tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+}
+
+#containerTable tbody tr:hover {
+    background-color: #f1e6ff;
+}
+
+#containerTable tbody td {
+    padding: 12px;
+    font-size: 13px;
+    color: #333;
+}
+
+#containerTable tbody td img {
+    margin-right: 10px;
+}
+
+#containerTable tbody td span {
+    vertical-align: middle;
+}
+
+#containerTable .dataTables_wrapper .dataTables_paginate .paginate_button {
+    background-color: #6b11cb;
+    color: white !important;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#containerTable .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: #4a0b8a;
+}
+
+#containerTable .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background-color: #4a0b8a;
+}
+
+#containerTable .dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+#containerTable .dataTables_wrapper .dataTables_length select {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 10px;
 }
