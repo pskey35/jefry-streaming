@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import Header from "../../components/header.jsx";
 import Aside from "../../components/aside.jsx";
 import "./subscription.css";
-import DataTable from "react-data-table-component";
+//import DataTable from "react-data-table-component";
+
+
+import $ from "jquery"; // Importa jQuery
+import "datatables.net-dt/css/dataTables.dataTables.css"; // Estilos de DataTables
+import "datatables.net"; // Importa DataTables
 
 export default function Subscriptions() {
     const [isLoading, setIsLoading] = useState(true);
@@ -48,6 +53,13 @@ export default function Subscriptions() {
 
         setFilteredData(filtered);
     }, [searchTerm, data]);
+
+    useEffect(() => {
+        if (!isLoading) {
+            // Inicializar DataTables después de que los datos se hayan cargado
+            $("#tabla").DataTable();
+        }
+    }, [isLoading]);
 
     const columns = [
         {
@@ -112,21 +124,24 @@ export default function Subscriptions() {
                         <div className="spinner"> </div>
                     ) : (
                         <div className="w-full overflow-x-auto rounded-xl border border-gray-200 rounded-md max-w-[100%] lg:max-w-[90%]" id="containerTable">
-                            <input
-                                type="text"
-                            
-                                placeholder="Buscar en tabla..."
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                className="ml-2 mb-4 p-2 border border-gray-300 rounded"
-                            />
-                            <DataTable
-                                title="Tus subscripciones"
-                                columns={columns}
-                                data={filteredData}
-                                pagination
-                                highlightOnHover
-                            />
+                            <table id="tabla" className="display">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Correo</th>
+                                        <th>Teléfono</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {filteredData.map((item, index) => (
+                                        <tr key={index}>
+                                            <td>{item?.profile?.service?.name || item?.account?.name}</td>
+                                            <td>{item?.profile?.account?.email || item?.account?.email}</td>
+                                            <td>{item?.profile?.number}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
                     )}
                 </div>
