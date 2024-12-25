@@ -92,7 +92,8 @@ export default function Subscriptions() {
     const columns = [
         {
             name: "SERVICIO",
-            selector: (row) => row.user.username,
+            selector: (row) => 
+                "nombreServicio "+ ( row.account == null ? "(Perfil)": "(Cuenta)" )
 
         },
         {
@@ -104,14 +105,14 @@ export default function Subscriptions() {
             name: "CONTRASENA",
             selector: (row) => (
                 <span
-                    style={{
+                    style={{/*
                         backgroundColor: "#d4edda",
                         color: "#155724",
                         padding: "3px 8px",
-                        borderRadius: "5px",
+                        borderRadius: "5px",*/
                     }}
                 >
-                    Aproved
+                   {row.user.password}
                 </span>
             ),
 
