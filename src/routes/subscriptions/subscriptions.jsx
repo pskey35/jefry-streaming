@@ -19,50 +19,52 @@ export default function Subscriptions() {
 
                 const user_id = localStorage.getItem("user_id");
 
-            
-                 const result = await fetch(`${import.meta.env.VITE_api}/subscriptions/api/v1/list/`, {
-                     method: "POST",
-                     headers: {
+
+                const result = await fetch(`${import.meta.env.VITE_api}/subscriptions/api/v1/list/`, {
+                    method: "POST",
+                    headers: {
                         'Content-Type': 'application/json', // Cambia según lo que requiera la API
                     },
-                     body: JSON.stringify({ user_id: user_id })
-                 });
- 
-                 const data = await result.json();
+                    body: JSON.stringify({ user_id: user_id })
+                });
+
+                const data = await result.json();
 
 
-                
-/*
-                const dataSimulator = [
-                    {
-                        id: 48,
-                        user: {
-                            id: 10,
-                            username: "Sebasstreaming",
-                            email: "",
-                            password: "pbkdf2_sha256$870000$D1K1tlnJjX4txYRH84bCAj$WspOLYaM4KLhvSsv2La5LEhR+0H1B2lZKxKjcbQvx2s="
-                        },
-                        account: null,
-                        profile: {
-                            id: 31,
-                            availability: false,
-                            accountID: null,
-                            name: "PROFILE",
-                            number: "(1)",
-                            pin: 1111,
-                            cost: "0.50",
-                            date_created: "2024-12-18T21:18:39.115744Z",
-                            date_updated: "2024-12-24T14:42:48.420611Z",
-                            service: 13,
-                            account: 7
-                        },
-                        date_start: "2024-12-18",
-                        date_expiration: "2025-01-17",
-                        date_created: "2024-12-18T22:01:54.940939Z",
-                        date_updated: "2024-12-18T22:01:54.940939Z"
-                    }
-                ];
-*/
+
+                /*
+                                const dataSimulator = [
+                                    {
+                                        id: 48,
+                                        user: {
+                                            id: 10,
+                                            username: "Sebasstreaming",
+                                            email: "",
+                                            password: "pbkdf2_sha256$870000$D1K1tlnJjX4txYRH84bCAj$WspOLYaM4KLhvSsv2La5LEhR+0H1B2lZKxKjcbQvx2s="
+                                        },
+                                        account: null,
+                                        profile: {
+                                            id: 31,
+                                            availability: false,
+                                            accountID: null,
+                                            name: "PROFILE",
+                                            number: "(1)",
+                                            pin: 1111,
+                                            cost: "0.50",
+                                            date_created: "2024-12-18T21:18:39.115744Z",
+                                            date_updated: "2024-12-24T14:42:48.420611Z",
+                                            service: 13,
+                                            account: 7
+                                        },
+                                        date_start: "2024-12-18",
+                                        date_expiration: "2025-01-17",
+                                        date_created: "2024-12-18T22:01:54.940939Z",
+                                        date_updated: "2024-12-18T22:01:54.940939Z"
+                                    }
+                                ];
+                */
+                console.log("data....")
+                console.log(data)
 
                 setData(data)
                 setIsLoading(false);
@@ -76,24 +78,29 @@ export default function Subscriptions() {
         fetchData();
     }, []);
 
-    useEffect(() => {
-        if (isLoading == false) {
-            console.log("asssssssssssss")
 
 
-            //    setFilter(item => item.user.username.toLoweCase().includes(filter.toLocaleLowerCase))
-
-        }
-
-    }, [data])
-
-   
 
     const columns = [
         {
             name: "SERVICIO",
-            selector: (row) => 
-                "nombreServicio "+ ( row.account == null ? "(Perfil)": "(Cuenta)" )
+            selector: (row) => (
+
+                <div style={{display:"flex",flexDirection:"column",alignItems:"center",padding:"10px 0"}}>
+                    <span className="mr-2">
+                        <img
+                            src={`https://djangobackendonlinestreaming.pythonanywhere.com/${row.profile.service.image}`}
+                            alt="Servicio"
+                            style={{ width: "30px" }}
+                        />
+                    </span>
+                    <span>
+                        {row.profile.service.name}
+
+                    </span>
+                </div>
+            )
+
 
         },
         {
@@ -112,7 +119,7 @@ export default function Subscriptions() {
                         borderRadius: "5px",*/
                     }}
                 >
-                   {row.user.password}
+                    {row.user.password}
                 </span>
             ),
 
@@ -129,11 +136,11 @@ export default function Subscriptions() {
         },
         {
             name: "FECHA DE COMPRA",
-            selector: (row) => row.opciones,
-        },{
+            selector: (row) => row.date_start,
+        }, {
             name: "FECHA DE VENCIMIENTO",
-            selector: (row) => row.opciones,
-        },{
+            selector: (row) => row.date_expiration,
+        }, {
             name: "OPCIONES",
             selector: (row) => row.opciones,
         },
