@@ -61,7 +61,7 @@ function Main() {
             cardContainer
         flex flex-1 flex gap-8 p-10 flex-col 
         sm:flex-row
-        relative
+        relative flex-wrap
         ">
 
                 {
