@@ -125,6 +125,7 @@ export default function Subscriptions() {
                                 columns={columns}
                                 data={filteredData}
                                 pagination
+                                highlightOnHover
                             />
                         </div>
                     )}
