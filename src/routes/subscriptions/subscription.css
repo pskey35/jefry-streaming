@@ -15,41 +15,52 @@
 */
 
 
+#containerTable > div.sc-eUlrpB.hZZlND{
+    /*max-height:65%;*/
+    max-height:16000px;
+    height:65%;
+    overflow:auto !important;
 
+}
 
-#containerTable::-webkit-scrollbar {
+/*
+.sc-eUlrpB, .hZZlND{
+    max-height:65%;
+    overflow:auto;
+    overflow-y:auto !important;
+}*/
+
+#containerTable > div.sc-eUlrpB.hZZlND::-webkit-scrollbar {
     width: 10px;
-
     height: 10px;
 
 }
 
 
-#containerTable::-webkit-scrollbar-track {
-    background: #f0f0f0;
+#containerTable > div.sc-eUlrpB.hZZlND::-webkit-scrollbar-track {
+    background: #f0f0f027;
 
     border-radius: 5px;
 
 }
 
 
-#containerTable::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, #ba79ffa9, #7dadff9c);
+#containerTable > div.sc-eUlrpB.hZZlND::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #ba79ff63, #7dadff59);
     border-radius: 5px;
     border: 1px solid #f0f0f0;
 
 }
 
 
-#containerTable::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(45deg, #ba79ff, #7dacff);
+#containerTable > div.sc-eUlrpB.hZZlND::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #ba79ff98, #7dadff60);
     cursor: pointer;
     
 }
 
-/
-#containerTable::-webkit-scrollbar-thumb:horizontal {
-    background: linear-gradient(45deg, #6a11cb, #2575fc);
+#containerTable > div.sc-eUlrpB.hZZlND::-webkit-scrollbar-thumb:horizontal {
+    background: linear-gradient(45deg, #6b11cb54, #2574fc81);
 }
 
 

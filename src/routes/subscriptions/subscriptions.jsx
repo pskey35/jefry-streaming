@@ -158,7 +158,7 @@ export default function Subscriptions() {
             <Aside></Aside>
             <div className="w-full flex flex-col items-center flex-[10] ">
                 <Header></Header>
-                <div className="w-full overflow-hidden rounded-3xl shadow-xs flex-1 flex items-center p-4 flex-col max-w-[100%] overflow-auto relative">
+                <div className="w-full overflow-hidden rounded-3xl shadow-xs flex-1 flex items-center p-4 flex-col max-w-[100%]  relative">
 
 
 
@@ -169,7 +169,7 @@ export default function Subscriptions() {
                         :
                         <>
                             <div className="w-full overflow-x-autorounded-xl border
-    border-gray-200 rounded-md max-w-[100%] overflow-auto
+    border-gray-200 rounded-md max-w-[100%] 
     lg:max-w-[90%]
 
 
