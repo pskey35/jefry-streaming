@@ -59,9 +59,10 @@ function Main() {
             <h2 className="text-[2em] p-8 pb-0 font-bold" >Services</h2>
             <div className="
             cardContainer
-        flex flex-1 flex gap-8 p-10 flex-col 
+        flex  flex-1 gap-8 p-10 flex-col 
         sm:flex-row
         relative flex-wrap
+      
         ">
 
                 {

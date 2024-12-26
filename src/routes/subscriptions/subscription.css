@@ -171,15 +171,63 @@ table tbody {
 
 
 
-
-
-
-
-#containerTable::-webkit-scrollbar {}
-
-#containerTable::-webkit-scrollbar-track {
-    background: red;
+#dt-length-0{
+    border:3px solid #ba79ff42;
+    border-radius:5px;
+    color:black;
+    font-family: monospace  ;
+    outline:none;
+    cursor:pointer;
+    transition:all 200ms ease;
+    background:white;
 }
+
+#dt-length-0:hover{
+    background:rgb(252, 237, 255);
+}
+
+
+#dt-length-0 > option{
+    padding:3px 15px;
+    border-radius:3px;
+    background:white;
+}
+
+
+
+
+
+
+#dt-search-0{
+    outline:3px solid #ba79ff42;
+    border-radius:5px;
+    color:black;
+    font-family: monospace  ;
+    transition:all 200ms ease;
+    background:white;
+    transition:all 200ms ease;
+}
+#dt-search-0:focus{
+    outline:3px solid #932fff96;
+}
+
+
+
+
+
+
+#tabla > thead > tr > th:nth-child(6) > span.dt-column-title{
+    width:150px;
+    display:flex;
+}
+
+#tabla > thead > tr > th:nth-child(7) > span.dt-column-title{
+    width:150px;
+    display:flex;
+}
+
+
+
 
 #containerTable::-webkit-scrollbar-thumb {
     background: linear-gradient(45deg, #ba79ff42, #7dadff1c);
@@ -189,3 +237,7 @@ table tbody {
 #containerTable::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(45deg, #ba79ff80, #7dadff80);
 }
+
+
+
+
