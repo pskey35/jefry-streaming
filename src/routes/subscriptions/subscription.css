@@ -37,9 +37,9 @@
 
 
 /*Showing..*/
-#tabla_info{
-    color:#9333ea;
-    font-weight:700;
+#tabla_info {
+    color: #9333ea;
+    font-weight: 700;
 }
 
 
@@ -57,11 +57,11 @@ div.dt-layout-cell.dt-layout-end>div>nav>button.dt-paging-button.disabled.first 
     background: white;
     outline: 2px solid #cfc2fd;
     border: none;
-    transition:all 200ms ease;
+    transition: all 200ms ease;
 }
 
 #tabla_wrapper>div:nth-child(3)>div.dt-layout-cell.dt-layout-end>div>nav>button.dt-paging-button.current:hover {
-    background:#d2b4fdb0;
+    background: #d2b4fdb0;
 }
 
 
@@ -171,44 +171,26 @@ table tbody {
 
 
 
-#dt-length-0{
-    border:3px solid #ba79ff42;
-    border-radius:5px;
-    color:black;
-    font-family: monospace  ;
-    outline:none;
-    cursor:pointer;
-    transition:all 200ms ease;
-    background:white;
+#dt-length-0 {
+    border: 3px solid #ba79ff42;
+    border-radius: 5px;
+    color: black;
+    font-family: monospace;
+    outline: none;
+    cursor: pointer;
+    transition: all 200ms ease;
+    background: white;
 }
 
-#dt-length-0:hover{
-    background:rgb(252, 237, 255);
-}
-
-
-#dt-length-0 > option{
-    padding:3px 15px;
-    border-radius:3px;
-    background:white;
+#dt-length-0:hover {
+    background: rgb(252, 237, 255);
 }
 
 
-
-
-
-
-#dt-search-0{
-    outline:3px solid #ba79ff42;
-    border-radius:5px;
-    color:black;
-    font-family: monospace  ;
-    transition:all 200ms ease;
-    background:white;
-    transition:all 200ms ease;
-}
-#dt-search-0:focus{
-    outline:3px solid #932fff96;
+#dt-length-0>option {
+    padding: 3px 15px;
+    border-radius: 3px;
+    background: white;
 }
 
 
@@ -216,14 +198,33 @@ table tbody {
 
 
 
-#tabla > thead > tr > th:nth-child(6) > span.dt-column-title{
-    width:150px;
-    display:flex;
+#dt-search-0 {
+    outline: 3px solid #ba79ff42;
+    border-radius: 5px;
+    color: black;
+    font-family: monospace;
+    transition: all 200ms ease;
+    background: white;
+    transition: all 200ms ease;
 }
 
-#tabla > thead > tr > th:nth-child(7) > span.dt-column-title{
-    width:150px;
-    display:flex;
+#dt-search-0:focus {
+    outline: 3px solid #932fff96;
+}
+
+
+
+
+
+
+#tabla>thead>tr>th:nth-child(6)>span.dt-column-title {
+    width: 150px;
+    display: flex;
+}
+
+#tabla>thead>tr>th:nth-child(7)>span.dt-column-title {
+    width: 150px;
+    display: flex;
 }
 
 
@@ -241,3 +242,70 @@ table tbody {
 
 
 
+
+
+
+
+@media (max-width:800px) {
+    #tabla_wrapper>div:nth-child(1) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}
+
+
+#tabla{
+    text-align: start;
+}
+
+#tabla th{
+    text-align:start;
+}
+
+#tabla td{
+    text-align:start;
+}
+
+
+
+#tabla>tbody>tr>td {
+    box-shadow: none;
+    background: white;
+    border: none;
+    transition: background-color 60ms ease;
+    padding:10px;
+    background:white;
+    border-radius:7px;
+    margin-right:10px;
+
+}
+
+#tabla>tbody>tr:hover {
+    background: rgb(252, 242, 255);
+    background:white;
+    border-radius:7px;
+    overflow:hidden;
+    box-shadow: none;
+    
+}
+
+#tabla>tbody>tr>td:hover {
+    background:rgb(252, 242, 255);
+    box-shadow: none;
+    color:black;
+    border-radius:7px;
+    overflow:hidden;
+}
+
+
+
+
+
+
+.tableContent{
+    background:white;
+    padding:20px 40px;
+    border-radius:40px;
+    box-shadow:0 0 0 0.5px #ba79ff42;
+}
