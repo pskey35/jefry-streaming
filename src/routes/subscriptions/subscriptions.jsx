@@ -144,7 +144,8 @@ export default function Subscriptions() {
 
                                             </td>
                                             <td>{item?.profile?.account?.email || item?.account?.email}</td>
-                                            <td style={{maxWidth:"200px",overflow:"hidden",textWrap:"nowrap",textOverflow:"ellipsis"}}>{item?.profile?.account?.password || "----"}</td>
+                                            <td style={{maxWidth:"200px",overflow:"hidden",textWrap:"nowrap",textOverflow:"ellipsis"}}>
+                                                {item?.profile?.account?.password || item?.account?.password || "----"}</td>
                                           
                                           
                                             <td style={{minWidth:"180px"}}>{item?.profile?.name} {item?.profile?.number || "----"}</td>
