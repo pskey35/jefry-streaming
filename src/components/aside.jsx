@@ -50,7 +50,7 @@ const IconServices = () =>
 const IconSubscription = () =>
 (
     <svg
-        className="w-5 h-5"
+        className="w-[20px] h-[20px]"
         aria-hidden="true"
         fill="none"
         strokeLinecap="round"
@@ -67,8 +67,7 @@ const IconSubscription = () =>
 
 
 export default function Aside() {
-    const [togglePagesMenu, setTooglePagesMenu] = useState()
-    const [pagesMenuOpen, setPagesMenuOpen] = useState()
+
     const [itemIndex, setItemIndex] = useState(0)
 
 
@@ -108,12 +107,15 @@ export default function Aside() {
 
 
 
-    const clickLogOut = () =>{
+    const clickLogOut = () => {
         //cerramos sesion 
 
         localStorage.removeItem("token")
         localStorage.removeItem("user_id")
     }
+
+
+ 
     return (
         <aside className="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0 max-w-[20%]">
             <div className="py-4 text-gray-500 dark:text-gray-400 flex flex-col h-full">
@@ -157,8 +159,8 @@ export default function Aside() {
                 cursor-pointer bg-white hover:bg-gray-100 transition 
                 rounded rounded-xl mx-2
                 transition-color"
-                onClick={clickLogOut}
-                
+                    onClick={clickLogOut}
+
                 >
                     <span className="mr-4">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">

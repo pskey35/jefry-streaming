@@ -78,7 +78,7 @@ function Main() {
                         rounded-xl flex-1 flex flex-col
                         cursor-pointer
                         hover:scale-105 transform transition duration-300 ease
-
+                          min-w-[300px]      
                         "
                         key={dataUnidad.id}
 

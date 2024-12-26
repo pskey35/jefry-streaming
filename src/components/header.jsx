@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import "./header.scss"
-import { useNavigate } from "react-router-dom"
+import { useNavigate,useLocation } from "react-router-dom"
 
 
 
@@ -58,6 +58,7 @@ const IconSubscription = () =>
 
 
 function MenuHeaderMobile() {
+    const location = useLocation()
 
     const navigate = useNavigate()
 
@@ -89,27 +90,34 @@ function MenuHeaderMobile() {
 
 
     let isClicked = false
-    const clickOutside = () =>{
+    const clickOutside = () => {
         if (isClicked) return;
 
-       
+
         const menuIcon = document.querySelector("#root > div > div > header > div > button")
         menuIcon.click()
         isClicked = true
-        setTimeout(()=>{
+        setTimeout(() => {
             isClicked = false
-        },300)
+        }, 300)
     }
+
+    const clickLogOut = () =>{
+        localStorage.removeItem("token")
+        localStorage.removeItem("user_id")
+    }
+
+
 
     return (
         <div className="menuMobile flex hidden md:hidden "  >
-            <div className="menuMobile_content pt-6">
+            <div className="menuMobile_content pt-6 flex flex-col">
                 <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200 mb-6 block " href="/">Windmill</a>
 
-                <ul className="list-none">
+                <ul className="list-none flex-1">
                     {
                         asideList.map((dataUnidad, index) => {
-
+                            
                             return (
                                 <li className="relative px-6 py-3 cursor-pointer" onClick={() => clickItem(index, dataUnidad.redirect_to)} key={dataUnidad.id}>
 
@@ -139,8 +147,27 @@ function MenuHeaderMobile() {
 
 
                 </ul>
+                <div className="flex items-center justify-start px-6 py-3 
+                cursor-pointer bg-white hover:bg-gray-100 transition 
+                rounded rounded-xl mx-2
+                transition-color
+                mb-6
+                "
+                    onClick={clickLogOut}
+
+                >
+                    <span className="mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+                        </svg>
+
+                    </span>
+                    <span>
+                        Log out
+                    </span>
+                </div>
             </div>
-            <div style={{flex:"1"}} onClick={()=> clickOutside()}>
+            <div style={{ flex: "1" }} onClick={() => clickOutside()}>
 
             </div>
         </div>
@@ -173,19 +200,19 @@ function Header() {
         isOpen = !isOpen
         if (isOpen) {
             menuMobilBox.style.opacity = "1"
-                menuMobilBox.style.display ="flex"
+            menuMobilBox.style.display = "flex"
             asideContent.style.animation = "fade 400ms ease forwards"
             return;
         }
 
         asideContent.style.animation = "retro 400ms ease forwards"
 
-     
-            menuMobilBox.style.opacity = "0"
 
-        setTimeout(()=>{
-            menuMobilBox.style.display ="none"
-        },300)
+        menuMobilBox.style.opacity = "0"
+
+        setTimeout(() => {
+            menuMobilBox.style.display = "none"
+        }, 300)
 
 
 

@@ -145,8 +145,8 @@ export default function Subscriptions() {
                                             </td>
                                             <td>{item?.profile?.account?.email || item?.account?.email}</td>
                                             <td style={{maxWidth:"200px",overflow:"hidden",textWrap:"nowrap",textOverflow:"ellipsis"}}>{item?.user?.password}</td>
-                                            <td>{item?.profile?.number}</td>
-                                            <td>{item?.profile?.pin}</td>
+                                            <td>{item?.profile?.number || "----"}</td>
+                                            <td>{item?.profile?.pin || "----"}</td>
                                             <td style={{minWidth:"150px",textAlign:"center"}}>{item.date_start}</td>
                                             <td style={{minWidth:"180px",textAlign:"center"}}>{item?.date_expiration}</td>
                                             <td>opciones...</td>
