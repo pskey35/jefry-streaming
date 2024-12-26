@@ -195,7 +195,7 @@ table tbody{
 }
 
 #containerTable thead {
-    background-color: #6b11cb;
+    background: linear-gradient(45deg, #ba79ff98, #7dadff60);
     color: white;
     font-size: 14px;
     text-align: left;
@@ -211,7 +211,7 @@ table tbody{
 }
 
 #containerTable tbody tr:hover {
-    background-color: #f1e6ff;
+    background: linear-gradient(45deg, #ba79ff42, #7dadff1c);
 }
 
 #containerTable tbody td {
@@ -259,4 +259,17 @@ table tbody{
     border-radius: 5px;
     padding: 5px;
     margin-left: 10px;
+}
+
+
+
+
+
+
+/*----mis confis*/
+#tabla_wrapper > div.dt-layout-row.dt-layout-table{
+    border-radius: 30px;
+    overflow: auto;
+    max-height: 420px;
+
 }

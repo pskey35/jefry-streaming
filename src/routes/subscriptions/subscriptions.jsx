@@ -117,7 +117,7 @@ export default function Subscriptions() {
                                         <th>Contrasena</th>
                                         <th>Perfil</th>
                                         <th>Pin</th>
-                                        <th>Fecha de compra</th>
+                                        <th >Fecha de compra</th>
                                         <th>Fecha de vencimiento</th>
                                         <th>Opciones</th>
                                     </tr>
@@ -127,7 +127,7 @@ export default function Subscriptions() {
                                         <tr key={index}>
 
                                             <td>
-                                                <div className="flex flex-row items-center">
+                                                <div className="flex flex-row items-center " style={{width:"200px"}}>
                                                     <img
                                                         src={`https://djangobackendonlinestreaming.pythonanywhere.com/${item?.profile?.service?.image || item?.account?.service?.image}`}
                                                         alt="Servicio"
@@ -142,11 +142,11 @@ export default function Subscriptions() {
 
                                             </td>
                                             <td>{item?.profile?.account?.email || item?.account?.email}</td>
-                                            <td>{item?.user?.password}</td>
+                                            <td style={{maxWidth:"200px",overflow:"hidden",textWrap:"nowrap",textOverflow:"ellipsis"}}>{item?.user?.password}</td>
                                             <td>{item?.profile?.number}</td>
                                             <td>{item?.profile?.pin}</td>
-                                            <td>{item.date_start}</td>
-                                            <td>{item?.date_expiration}</td>
+                                            <td style={{minWidth:"150px",textAlign:"center"}}>{item.date_start}</td>
+                                            <td style={{minWidth:"180px",textAlign:"center"}}>{item?.date_expiration}</td>
                                             <td>opciones...</td>
 
                                         </tr>
