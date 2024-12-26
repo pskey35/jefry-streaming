@@ -104,7 +104,11 @@ export default function Subscriptions() {
             <Aside />
             <div className="w-full flex flex-col items-center flex-[10]">
                 <Header />
-                <div className="w-full overflow-hidden rounded-3xl shadow-xs flex-1 flex items-center p-4 flex-col max-w-[100%] relative">
+                <div className="w-full overflow-hidden 
+                rounded-3xl shadow-xs flex-1 flex 
+                items-center p-2 flex-col max-w-[100%] relative
+                md:p-4
+                ">
 
 
                     {isLoading ? (
@@ -117,7 +121,7 @@ export default function Subscriptions() {
                                 <table id="tabla" className="display">
                                     <thead>
                                         <tr>
-                                            <th>Servicio</th>
+                                            <th style={{whiteSpace:"nowrap",padding:"10px 60px 10px 20px"}}>Servicio</th>
                                             <th>Correo</th>
                                             <th>Contrasena</th>
                                             <th>Perfil</th>
@@ -133,8 +137,8 @@ export default function Subscriptions() {
                                             <tr key={index}>
 
 
-                                                <td>
-                                                    <div className="flex flex-row items-center " style={{ width: "200px" }}>
+                                                <td style={{whiteSpace:"nowrap",padding:"10px 60px 10px 20px"}}>
+                                                    <div className="flex flex-row items-center ">
                                                         <img
                                                             src={`https://djangobackendonlinestreaming.pythonanywhere.com/${item?.profile?.service?.image || item?.account?.service?.image}`}
                                                             alt="Servicio"
@@ -148,7 +152,7 @@ export default function Subscriptions() {
 
 
                                                 </td>
-                                                <td>
+                                                <td style={{whiteSpace:"nowrap",padding:"10px 60px 10px 20px"}}>
                                                     <div>
 
 
@@ -160,7 +164,7 @@ export default function Subscriptions() {
                                                         {item?.profile?.account?.password || item?.account?.password || "----"}
                                                     </div>
                                                 </td>
-                                                <td style={{ minWidth: "180px" }}>
+                                                <td style={{whiteSpace:"nowrap",padding:"10px 60px 10px 20px"}}>
                                                     <div>
                                                         {item?.profile?.name} {item?.profile?.number || "----"}
 
@@ -168,7 +172,7 @@ export default function Subscriptions() {
 
                                                 </td>
 
-                                                <td>
+                                                <td style={{whiteSpace:"nowrap",padding:"10px 60px 10px 20px"}}>
 
                                                     <div>
                                                         {item?.profile?.pin || "----"}
@@ -176,19 +180,19 @@ export default function Subscriptions() {
 
                                                 </td>
 
-                                                <td style={{ minWidth: "150px", textAlign: "center" }}>
+                                                <td style={{whiteSpace:"nowrap",padding:"10px 60px 10px 20px"}}>
                                                     <div>
                                                         {item.date_start}
                                                     </div>
 
                                                 </td>
-                                                <td style={{ minWidth: "180px", textAlign: "center" }}>
+                                                <td style={{whiteSpace:"nowrap",padding:"10px 60px 10px 20px"}}>
                                                     <div>
                                                         {item.date_expiration}
                                                     </div>
 
                                                 </td>
-                                                <td>
+                                                <td style={{whiteSpace:"nowrap",padding:"10px 60px 10px 20px"}}>
                                                     <div>
                                                         opciones...
                                                     </div>

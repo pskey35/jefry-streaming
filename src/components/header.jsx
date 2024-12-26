@@ -123,7 +123,7 @@ function MenuHeaderMobile() {
 
                                     {location.pathname === dataUnidad.redirect_to ?
                                         <span
-                                            className="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                            className="bgColorBlue absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
                                             aria-hidden="true"
                                         ></span> : ""
                                     }
@@ -252,9 +252,10 @@ function Header() {
                         aria-label="Menu"
                     >
                         <svg
+                            fill="#16CAF2"
                             className="w-6 h-6"
                             aria-hidden="true"
-                            fill="currentColor"
+                        
                             viewBox="0 0 20 20"
                         >
                             <path
@@ -301,8 +302,13 @@ function Header() {
                     <ul className="flex items-center flex-shrink-0 space-x-6">
 
                         <li className="text-black flex items-center justify-center">
-                            <span style={{ fontWeight: "500", fontSize: "12px", color: "#9f9f9f", marginRight: "5px", lineHeight: "1" }}>Saldo: </span>
-                            <span style={{ fontWeight: "900", fontSize: "24px", color: "#9333ea" }}>$130.50</span>
+                            <span style={{ fontWeight: "500", fontSize: "12px", color: "#9f9f9f", marginRight: "5px", lineHeight: "1" }}>
+                                Saldo:
+                            </span>
+                            <span className="textColorBlue" style={{ fontWeight: "900", fontSize: "24px", color: "#9333ea" }}>
+                                $130.50
+
+                            </span>
                         </li>
                         {/* Profile menu */}
                         <li className="relative">

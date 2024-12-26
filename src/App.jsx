@@ -6,9 +6,8 @@ import Login from "./routes/login/login.jsx"
 import Register from "./routes/register/register.jsx"
 import Suscripciones from "./routes/subscriptions/subscriptions.jsx"
 import Services from "./routes/services/services.jsx"
-
-
 import RoutePrivate from "./components/routePrivate.jsx"
+
 
 export default function App() {
   //Refactor dark theme tailwind config

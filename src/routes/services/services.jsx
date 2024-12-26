@@ -100,11 +100,15 @@ function Main() {
 
 
                                     <div className="h-[50px]">
-                                        <div className="w-full
+                                        <div className="
+                                        bgColorBlue
+                                        w-full
                                 cursor-pointer
                                  bg-blue-200 p-2 rounded rounded-xl 
                                  hover:bg-blue-400
-                                 flex justify-evenly items:center" >
+                                 flex justify-evenly items:center" 
+                                 
+                                 >
 
                                             <span
 
@@ -114,7 +118,7 @@ function Main() {
                                                     fontSize: "16px",
                                                     display: "grid",
                                                     placeItems: "center",
-                                                    fontWeight: "700"
+                                                    fontWeight: "900"
                                                 }}>
 
                                                 Comprar
@@ -230,7 +234,7 @@ function ModalCard() {
                         </div>
                         <div>
                             <div style={{ color: "#27cb27", fontWeight: "700" }}>
-                                <span style={{ fontSize: "30px" }}>
+                                <span className="textColorBlue_2" style={{ fontSize: "30px" }}>
                                     $ {dataModal.price}
                                 </span>
 
@@ -239,7 +243,7 @@ function ModalCard() {
                         </div>
                     </div>
                 </div>
-                <div className="buttonModalBuy w-full bg-blue-300 rounded rounded-xl color-white text-center p-4" onClick={clickBuying}>
+                <div className="bgColorBlue buttonModalBuy w-full bg-blue-300 rounded rounded-xl color-white text-center p-4" onClick={clickBuying}>
                     Comprar
                 </div>
 

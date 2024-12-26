@@ -49,7 +49,7 @@ const SideMenu = () => {
                 <ul className="mt-6">
                     <li className="relative px-6 py-3">
                         <span
-                            className="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                            className="bgColorBlue absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
                             aria-hidden="true"
                         ></span>
                         <a

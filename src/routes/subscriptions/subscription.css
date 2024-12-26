@@ -38,40 +38,40 @@
 
 /*Showing..*/
 #tabla_info {
-    color: #9333ea;
+    color: #16CAF2;
     font-weight: 700;
 }
 
 
 div.dt-layout-cell.dt-layout-end>div>nav>button.dt-paging-button.disabled.first {
-    color: #9333ea !important;
+    color: #16CAF2 !important;
 }
 
 #tabla_wrapper>div:nth-child(3)>div.dt-layout-cell.dt-layout-end>div>nav>button.dt-paging-button.disabled.previous {
-    color: #9333ea !important;
+    color: #16CAF2 !important;
 }
 
 /*boton paginacion*/
 #tabla_wrapper>div:nth-child(3)>div.dt-layout-cell.dt-layout-end>div>nav>button.dt-paging-button.current {
     border-radius: 10px;
     background: white;
-    outline: 2px solid #cfc2fd;
+    outline: 2px solid #16CAF2;
     border: none;
     transition: all 200ms ease;
 }
 
 #tabla_wrapper>div:nth-child(3)>div.dt-layout-cell.dt-layout-end>div>nav>button.dt-paging-button.current:hover {
-    background: #d2b4fdb0;
+    background: #16CAF2
 }
 
 
 
 #tabla_wrapper>div:nth-child(3)>div.dt-layout-cell.dt-layout-end>div>nav>button.dt-paging-button.disabled.next {
-    color: #9333ea !important;
+    color: #16CAF2 !important;
 }
 
 #tabla_wrapper>div:nth-child(3)>div.dt-layout-cell.dt-layout-end>div>nav>button.dt-paging-button.disabled.last {
-    color: #9333ea !important;
+    color: #16CAF2 !important;
 }
 
 
@@ -92,7 +92,7 @@ table tbody {
 }
 
 #containerTable thead {
-    background: linear-gradient(45deg, #ba79ff98, #7dadff60);
+    background: linear-gradient(45deg, #00d5ffea, rgba(80, 229, 255, 0.603));
     color: white;
     font-size: 14px;
     text-align: left;
@@ -126,7 +126,7 @@ table tbody {
 }
 
 #containerTable .dataTables_wrapper .dataTables_paginate .paginate_button {
-    background-color: #6b11cb;
+    background-color: #16CAF2;
     color: white !important;
     border: none;
     border-radius: 5px;
@@ -137,11 +137,11 @@ table tbody {
 }
 
 #containerTable .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    background-color: #4a0b8a;
+    background-color: #16CAF2;
 }
 
 #containerTable .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    background-color: #4a0b8a;
+    background-color: #16CAF2;
 }
 
 #containerTable .dataTables_wrapper .dataTables_filter input {
@@ -172,7 +172,7 @@ table tbody {
 
 
 #dt-length-0 {
-    border: 3px solid #ba79ff42;
+    border: 3px solid #16CAF2;
     border-radius: 5px;
     color: black;
     font-family: monospace;
@@ -183,7 +183,7 @@ table tbody {
 }
 
 #dt-length-0:hover {
-    background: rgb(252, 237, 255);
+    background: #16caf248;
 }
 
 
@@ -198,8 +198,10 @@ table tbody {
 
 
 
+/*esto es el input search de datatable net*/
 #dt-search-0 {
-    outline: 3px solid #ba79ff42;
+    border: none;
+    outline: 3px solid #1ed6ff49;
     border-radius: 5px;
     color: black;
     font-family: monospace;
@@ -209,7 +211,7 @@ table tbody {
 }
 
 #dt-search-0:focus {
-    outline: 3px solid #932fff96;
+    outline: 3px solid #16CAF2;
 }
 
 
@@ -231,12 +233,12 @@ table tbody {
 
 
 #containerTable::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, #ba79ff42, #7dadff1c);
+    background: linear-gradient(45deg, #2cd7f983, #2cd7f941);
     border-radius: 6px;
 }
 
 #containerTable::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(45deg, #ba79ff80, #7dadff80);
+    background: linear-gradient(45deg, #2cd7f983, #2cd7f941);
 }
 
 
@@ -246,25 +248,19 @@ table tbody {
 
 
 
-@media (max-width:800px) {
-    #tabla_wrapper>div:nth-child(1) {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-    }
-}
 
 
-#tabla{
+
+#tabla {
     text-align: start;
 }
 
-#tabla th{
-    text-align:start;
+#tabla th {
+    text-align: start;
 }
 
-#tabla td{
-    text-align:start;
+#tabla td {
+    text-align: start;
 }
 
 
@@ -274,28 +270,26 @@ table tbody {
     background: white;
     border: none;
     transition: background-color 60ms ease;
-    padding:10px;
-    background:white;
-    border-radius:7px;
-    margin-right:10px;
-
+    padding: 10px;
+    background: white;
+    border-radius: 7px;
 }
 
 #tabla>tbody>tr:hover {
     background: rgb(252, 242, 255);
-    background:white;
-    border-radius:7px;
-    overflow:hidden;
+    background: white;
+    border-radius: 7px;
+    overflow: hidden;
     box-shadow: none;
-    
+
 }
 
 #tabla>tbody>tr>td:hover {
-    background:rgb(252, 242, 255);
+    background: #2cd7f918;
     box-shadow: none;
-    color:black;
-    border-radius:7px;
-    overflow:hidden;
+    color: black;
+    border-radius: 7px;
+    overflow: hidden;
 }
 
 
@@ -303,13 +297,37 @@ table tbody {
 
 
 
-.tableContent{
-   padding:20px;
+.tableContent {
+    padding: 20px;
 }
 
-#tabla_wrapper{
-    background:white;
-    padding:20px 40px;
-    border-radius:40px;
-    box-shadow:0 0 10px 1.5px #ba79ff42;
+#tabla_wrapper {
+    background: white;
+    padding: 20px 40px;
+    border-radius: 40px;
+    box-shadow: 0 0 10px 1.5px #2cd7f915;
 }
+
+
+
+
+@media (max-width:800px) {
+    #tabla_wrapper>div:nth-child(1) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
+
+    #tabla_wrapper {
+        padding: 15px;
+    }
+
+    .tableContent {
+        padding: 0;
+    }
+
+}
+
+
