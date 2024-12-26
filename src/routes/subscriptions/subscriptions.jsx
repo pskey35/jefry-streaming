@@ -111,7 +111,7 @@ export default function Subscriptions() {
                         <div className="spinner"> </div>
                     ) : (
                         <div className="w-full overflow-x-auto rounded-xl border border-gray-200 rounded-md max-w-[100%] lg:max-w-[90%]" id="containerTable">
-                            <h2 className="text-[1.5em] font-bold ">Subscriptions</h2>
+                            <h2 className="text-[1.5em] font-bold mb-4">Subscriptions</h2>
 
                             <div className="tableContent">
                                 <table id="tabla" className="display">
