@@ -38,6 +38,7 @@ export default function Subscriptions() {
     }, []);
 
    
+   
 
     useEffect(() => {
         if (!isLoading) {
@@ -123,6 +124,7 @@ export default function Subscriptions() {
                                     </tr>
                                 </thead>
                                 <tbody>
+                               
                                     {data && data.map((item, index) => (
                                         <tr key={index}>
 
