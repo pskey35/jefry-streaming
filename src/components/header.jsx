@@ -198,19 +198,23 @@ function Header() {
     const toggleSideMenu = () => {
         const asideContent = document.querySelector("#root > div > div > div.menuMobile.md\\:hidden > div")
         const menuMobilBox = document.querySelector(".menuMobile")
+        const content = document.querySelector("#content");
         //esto es de mobiles nada mas
         isOpen = !isOpen
         if (isOpen) {
             menuMobilBox.style.opacity = "1"
             menuMobilBox.style.display = "flex"
             asideContent.style.animation = "fade 400ms ease forwards"
+
+            content.style.overflow = "hidden"
+
             return;
         }
 
         asideContent.style.animation = "retro 400ms ease forwards"
-
-
         menuMobilBox.style.opacity = "0"
+
+        content.style.overflow = "visible"
 
         setTimeout(() => {
             menuMobilBox.style.display = "none"
@@ -249,7 +253,10 @@ function Header() {
                 
                 ">
                     <button
-                        className="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple"
+                        className="p-1 mr-5 -ml-1 rounded-md md:hidden 
+                        focus:outline-none focus:shadow-outline-purple"
+
+
                         onClick={toggleSideMenu}
                         aria-label="Menu"
                     >
@@ -257,7 +264,7 @@ function Header() {
                             fill="#16CAF2"
                             className="w-6 h-6"
                             aria-hidden="true"
-                        
+
                             viewBox="0 0 20 20"
                         >
                             <path

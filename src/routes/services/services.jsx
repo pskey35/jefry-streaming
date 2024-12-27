@@ -59,7 +59,7 @@ function Main() {
     }, [])
 
     return (
-        <>
+        <div id="servicesContent">
             <h2 className="text-[1.5em] p-8 pb-0 font-bold" >Services</h2>
             <div className="
             cardContainer
@@ -136,7 +136,7 @@ function Main() {
                         })
                 }
             </div>
-        </>
+        </div>
     )
 }
 
@@ -285,7 +285,7 @@ export default function Services() {
         <ServicesContext.Provider value={{ setOpenModal, openModal, dataModal, setDataModal }}>
             <div className="flex h-full">
                 <Aside></Aside>
-                <div className="flex-1 flex flex-col">
+                <div className="flex-1 flex flex-col" id="content">
                     <Header></Header>
                     <Main></Main>
                 </div>
