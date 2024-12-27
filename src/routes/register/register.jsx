@@ -192,7 +192,7 @@ export default function Register() {
                             <label className="block text-sm">
                                 <span className="text-gray-700 dark:text-gray-400">User name</span>
                                 <input
-                                    className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input register-input"
+                                    className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-blue-300 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input register-input"
                                     onInput={inputUserName_event}
                                     id="inputUserName"
                                     placeholder="Jane Doe"
@@ -201,7 +201,7 @@ export default function Register() {
                             <label className="block mt-4 text-sm">
                                 <span className="text-gray-700 dark:text-gray-400">Password</span>
                                 <input
-                                    className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input register-input"
+                                    className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-blue-300 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input register-input"
                                     placeholder="***************"
                                     id="inputPassword"
                                     type="password"
@@ -212,7 +212,7 @@ export default function Register() {
                                     Confirm password
                                 </span>
                                 <input
-                                    className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input register-input"
+                                    className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-blue-300 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input register-input"
                                     placeholder="***************"
                                     onInput={inputRepeatPassword_event}
                                     id="inputRepeatPassword"
@@ -224,7 +224,7 @@ export default function Register() {
                                 <label className="flex items-center dark:text-gray-400">
                                     <input
                                         type="checkbox"
-                                        className="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                                        className="text-purple-600 form-checkbox focus:border-blue-300 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                                     />
                                     <span className="ml-2">
                                         I agree to the
@@ -254,7 +254,7 @@ export default function Register() {
                             <hr className="my-8" />
 
                             <button
-                                className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray register-button"
+                                className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 active:bg-transparent hover:border-gray-500 focus:border-blue-300 active:text-gray-500 focus:outline-none focus:shadow-outline-gray register-button"
                             >
                                 <svg
                                     className="w-4 h-4 mr-2"
@@ -269,7 +269,7 @@ export default function Register() {
                                 Github
                             </button>
                             <button
-                                className="flex items-center justify-center w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray register-button"
+                                className="flex items-center justify-center w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 active:bg-transparent hover:border-gray-500 focus:border-blue-300 active:text-gray-500 focus:outline-none focus:shadow-outline-gray register-button"
                             >
                                 <svg
                                     className="w-4 h-4 mr-2"
@@ -286,7 +286,7 @@ export default function Register() {
 
                             <p className="mt-4">
                                 <a
-                                    className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
+                                    className="link-login text-sm font-medium hover:underline"
                                     href="./login"
                                 >
                                     Already have an account? Login

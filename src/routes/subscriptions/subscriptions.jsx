@@ -106,15 +106,15 @@ export default function Subscriptions() {
                 <Header />
                 <div className="w-full overflow-hidden 
                 rounded-3xl shadow-xs flex-1 flex 
-                items-center p-2 flex-col max-w-[100%] relative
-                md:p-4
+                items-center py-8 px-4 flex-col max-w-[100%] relative
+                md:py-8
                 ">
 
 
                     {isLoading ? (
                         <div className="spinner"> </div>
                     ) : (
-                        <div className="w-full overflow-x-auto rounded-xl border border-gray-200 rounded-md max-w-[100%] lg:max-w-[90%]" id="containerTable">
+                        <div className="w-full overflow-x-auto rounded-xl border border-gray-200 rounded-md max-w-[100%] lg:max-w-[96%]" id="containerTable">
                             <h2 className="text-[1.5em] font-bold mb-4">Subscriptions</h2>
 
                             <div className="tableContent">

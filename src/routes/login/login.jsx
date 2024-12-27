@@ -250,7 +250,7 @@ function Login() {
                             <p className="mt-4">
                                 <span
                                     className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline cursor-pointer"
-
+                                    style={{color:"rgba(0, 213, 255, 0.9176470588)"}}
                                     href="./forgot-password.html"
                                 >
                                     Forgot your password?
@@ -259,7 +259,7 @@ function Login() {
                             <p className="mt-1">
                                 <span
                                     className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline cursor-pointer"
-
+                                    style={{color:"rgba(0, 213, 255, 0.9176470588)"}}
                                     onClick={() => navigate("/register")}
                                 >
                                     Create account

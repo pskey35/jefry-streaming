@@ -27,9 +27,15 @@
     }
 }
 
-@media (min-width:1201px) and (max-width:1800px) {
+@media (min-width:1201px) and (max-width:1500px) {
     #containerTable {
-        width: 1075px;
+        width: 1070px;
+    }
+}
+
+@media (min-width:1501px) and (max-width:1800px) {
+    #containerTable {
+        width: 1090px;
     }
 }
 
@@ -297,9 +303,6 @@ table tbody {
 
 
 
-.tableContent {
-    padding: 20px;
-}
 
 #tabla_wrapper {
     background: white;

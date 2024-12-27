@@ -16,6 +16,9 @@
 
 
 #buttonSend {
+    background: linear-gradient(45deg, rgba(0, 213, 255, 0.9176470588),
+     rgba(80, 229, 255, 0.603)) !important;
+
     .loader {
         width: 20px;
         aspect-ratio: 1;
@@ -41,4 +44,10 @@
     transition:all 200ms ease;
     margin-top:10px;
     height:25px;
+}
+
+
+
+.link-login{
+    color:rgba(0, 213, 255, 0.918);
 }
