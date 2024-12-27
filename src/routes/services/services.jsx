@@ -2,9 +2,13 @@ import Header from "../../components/header.jsx"
 import Aside from "../../components/aside.jsx"
 import { useState, useContext, createContext, useEffect } from "react"
 import "./modalCard.css"
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
-
+const MySwal = withReactContent(Swal);
 const ServicesContext = createContext()
+
+
 
 function Main() {
 
@@ -192,6 +196,20 @@ function ModalCard() {
         })
         const response = await resu.json()
         console.log(response)
+        if(response?.error){
+            MySwal.fire({
+                title: "Error",
+                text: "Este servicio no esta disponible",
+                icon: "error"
+            })
+        }else if(response?.success){
+            MySwal.fire({
+                title: "Exito",
+                text: "Servicio comprado",
+                icon: "success"
+            })
+        }
+
     }
 
     return (
@@ -243,7 +261,9 @@ function ModalCard() {
                         </div>
                     </div>
                 </div>
-                <div className="bgColorBlue buttonModalBuy w-full bg-blue-300 rounded rounded-xl color-white text-center p-4" onClick={clickBuying}>
+                <div className="bgColorBlue buttonModalBuy w-full
+                 bg-blue-300 rounded rounded-xl color-white text-center p-4" 
+                style={{color:"white"}} onClick={clickBuying}>
                     Comprar
                 </div>
 
