@@ -105,6 +105,8 @@ function MenuHeaderMobile() {
     const clickLogOut = () => {
         localStorage.removeItem("token")
         localStorage.removeItem("user_id")
+
+        navigate("/login")
     }
 
 

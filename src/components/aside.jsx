@@ -112,6 +112,7 @@ export default function Aside() {
 
         localStorage.removeItem("token")
         localStorage.removeItem("user_id")
+        navigate("/login")
     }
 
 
