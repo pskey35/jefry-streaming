@@ -42,8 +42,10 @@ export default function Subscriptions() {
 
     useEffect(() => {
         if (!isLoading) {
-            // Inicializar DataTables después de que los datos se hayan cargado
-            $("#tabla").DataTable();
+            // Inicializar DataTables con ordenamiento por la columna "Fecha de vencimiento"
+            $("#tabla").DataTable({
+                order: [[6, 'desc']] // Índice de la columna "Fecha de vencimiento" (empezando desde 0)
+            });
         }
     }, [isLoading]);
 
