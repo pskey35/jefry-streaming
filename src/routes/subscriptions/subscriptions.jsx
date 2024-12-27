@@ -12,8 +12,7 @@ import "datatables.net"; // Importa DataTables
 export default function Subscriptions() {
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("");
-    const [filteredData, setFilteredData] = useState([]);
+    const [existData, setExistData] = useState(null)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,8 +26,17 @@ export default function Subscriptions() {
                     body: JSON.stringify({ user_id: user_id })
                 });
                 const data = await result.json();
+                console.log("esto llega")
+                console.log(data)
+                console.log("")
+
+                if (data?.information) {
+                    console.log(data.length)
+                    setExistData(false)
+                    return;
+                }
                 setData(data);
-                setFilteredData(data);
+                setExistData(true)
                 setIsLoading(false);
             } catch (error) {
                 console.error("Error al obtener datos:", error);
@@ -49,60 +57,10 @@ export default function Subscriptions() {
         }
     }, [isLoading]);
 
-    const columns = [
-        {
-            name: "SERVICIO",
-            selector: (row) => (
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", padding: "10px 0" }}>
-                    <span className="mr-2">
-                        <img
-                            src={`https://djangobackendonlinestreaming.pythonanywhere.com/${row?.profile?.service?.image || row?.account?.service?.image}`}
-                            alt="Servicio"
-                            style={{ width: "30px" }}
-                        />
-                    </span>
-                    <span>
-                        {row?.profile?.service?.name || row?.account?.name}
-                    </span>
-                </div>
-            )
-        },
-        {
-            name: "CORREO",
-            selector: (row) => row?.profile?.account?.email || row?.account?.email,
-        },
-        {
-            name: "CONTRASENA",
-            selector: (row) => (
-                <span>
-                    {row?.user?.password}
-                </span>
-            ),
-        },
-        {
-            name: "PERFIL",
-            selector: (row) => "profile " + row?.profile?.number,
-        },
-        {
-            name: "PIN",
-            selector: (row) => row?.profile?.pin,
-        },
-        {
-            name: "FECHA DE COMPRA",
-            selector: (row) => row.date_start,
-        },
-        {
-            name: "FECHA DE VENCIMIENTO",
-            selector: (row) => row.date_expiration,
-        },
-        {
-            name: "OPCIONES",
-            selector: (row) => row.opciones,
-        },
-    ];
+
 
     return (
-        <div className="w-full overflow-x-auto flex bg-gray-50 h-full" style={{height: '100vh'}}>
+        <div className="w-full overflow-x-auto flex bg-gray-50 h-full" style={{ height: '100vh' }}>
             <Aside />
             <div className="w-full flex flex-col items-center flex-[10]">
                 <Header />
@@ -114,104 +72,116 @@ export default function Subscriptions() {
                 ">
 
 
-                    {isLoading ? (
-                        <div className="spinner"> </div>
-                    ) : (
+                    {existData == false ?
                         <div className="w-full auto rounded-xl border border-gray-200 rounded-md max-w-[100%] lg:max-w-[96%]" id="containerTable">
                             <h2 className="text-[1.5em] font-bold mb-4">Subscriptions</h2>
+                            <div className="text-center pt-[20%]">No existe ninguna subscripcion</div>
+                        </div> :
+                        isLoading ? (
+                            <div className="spinner" > </div>
+                        ) : (
+                            <div className="w-full auto rounded-xl border border-gray-200 rounded-md max-w-[100%] lg:max-w-[96%]" id="containerTable">
+                                <h2 className="text-[1.5em] font-bold mb-4">Subscriptions</h2>
 
-                            <div className="tableContent">
-                                <table id="tabla" className="display">
-                                    <thead>
-                                        <tr>
-                                            <th style={{whiteSpace:"nowrap",padding:"10px 60px 10px 20px"}}>Servicio</th>
-                                            <th>Correo</th>
-                                            <th>Contrasena</th>
-                                            <th>Perfil</th>
-                                            <th>Pin</th>
-                                            <th >Fecha de compra</th>
-                                            <th>Fecha de vencimiento</th>
-                                            <th>Opciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                                <div className="tableContent">
 
-                                        {data && data.map((item, index) => (
-                                            <tr key={index}>
-
-
-                                                <td style={{whiteSpace:"nowrap",padding:"10px 60px 10px 20px"}}>
-                                                    <div className="flex flex-row items-center ">
-                                                        <img
-                                                            src={`https://djangobackendonlinestreaming.pythonanywhere.com/${item?.profile?.service?.image || item?.account?.service?.image}`}
-                                                            alt="Servicio"
-                                                            style={{ width: "30px" }}
-                                                        />
-                                                        <span>
-                                                            {item?.profile?.service?.name || item?.account?.name}
-                                                        </span>
-                                                    </div>
-
-
-
-                                                </td>
-                                                <td style={{whiteSpace:"nowrap",padding:"10px 60px 10px 20px"}}>
-                                                    <div>
-
-
-                                                        {item?.profile?.account?.email || item?.account?.email}
-                                                    </div>
-                                                </td>
-                                                <td style={{ maxWidth: "200px", overflow: "hidden", textWrap: "nowrap", textOverflow: "ellipsis" }}>
-                                                    <div>
-                                                        {item?.profile?.account?.password || item?.account?.password || "----"}
-                                                    </div>
-                                                </td>
-                                                <td style={{whiteSpace:"nowrap",padding:"10px 60px 10px 20px"}}>
-                                                    <div>
-                                                        {item?.profile?.name} {item?.profile?.number || "----"}
-
-                                                    </div>
-
-                                                </td>
-
-                                                <td style={{whiteSpace:"nowrap",padding:"10px 60px 10px 20px"}}>
-
-                                                    <div>
-                                                        {item?.profile?.pin || "----"}
-                                                    </div>
-
-                                                </td>
-
-                                                <td style={{whiteSpace:"nowrap",padding:"10px 60px 10px 20px"}}>
-                                                    <div>
-                                                        {item.date_start}
-                                                    </div>
-
-                                                </td>
-                                                <td style={{whiteSpace:"nowrap",padding:"10px 60px 10px 20px"}}>
-                                                    <div>
-                                                        {item.date_expiration}
-                                                    </div>
-
-                                                </td>
-                                                <td style={{whiteSpace:"nowrap",padding:"10px 60px 10px 20px"}}>
-                                                    <div>
-                                                        opciones...
-                                                    </div>
-
-                                                </td>
-
+                                    <table id="tabla" className="display">
+                                        <thead>
+                                            <tr>
+                                                <th style={{ whiteSpace: "nowrap", padding: "10px 60px 10px 20px" }}>Servicio</th>
+                                                <th>Correo</th>
+                                                <th>Contrasena</th>
+                                                <th>Perfil</th>
+                                                <th>Pin</th>
+                                                <th >Fecha de compra</th>
+                                                <th>Fecha de vencimiento</th>
+                                                <th>Opciones</th>
                                             </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
+                                        </thead>
+                                        <tbody>
 
-                        </div>
-                    )}
+
+
+                                            {data && data.map((item, index) => (
+                                                <tr key={index}>
+
+
+                                                    <td style={{ whiteSpace: "nowrap", padding: "10px 60px 10px 20px" }}>
+                                                        <div className="flex flex-row items-center ">
+                                                            <img
+                                                                src={`https://djangobackendonlinestreaming.pythonanywhere.com/${item?.profile?.service?.image || item?.account?.service?.image}`}
+                                                                alt="Servicio"
+                                                                style={{ width: "30px" }}
+                                                            />
+                                                            <span>
+                                                                {item?.profile?.service?.name || item?.account?.name}
+                                                            </span>
+                                                        </div>
+
+
+
+                                                    </td>
+                                                    <td style={{ whiteSpace: "nowrap", padding: "10px 60px 10px 20px" }}>
+                                                        <div>
+
+
+                                                            {item?.profile?.account?.email || item?.account?.email}
+                                                        </div>
+                                                    </td>
+                                                    <td style={{ maxWidth: "200px", overflow: "hidden", textWrap: "nowrap", textOverflow: "ellipsis" }}>
+                                                        <div>
+                                                            {item?.profile?.account?.password || item?.account?.password || "----"}
+                                                        </div>
+                                                    </td>
+                                                    <td style={{ whiteSpace: "nowrap", padding: "10px 60px 10px 20px" }}>
+                                                        <div>
+                                                            {item?.profile?.name} {item?.profile?.number || "----"}
+
+                                                        </div>
+
+                                                    </td>
+
+                                                    <td style={{ whiteSpace: "nowrap", padding: "10px 60px 10px 20px" }}>
+
+                                                        <div>
+                                                            {item?.profile?.pin || "----"}
+                                                        </div>
+
+                                                    </td>
+
+                                                    <td style={{ whiteSpace: "nowrap", padding: "10px 60px 10px 20px" }}>
+                                                        <div>
+                                                            {item.date_start}
+                                                        </div>
+
+                                                    </td>
+                                                    <td style={{ whiteSpace: "nowrap", padding: "10px 60px 10px 20px" }}>
+                                                        <div>
+                                                            {item.date_expiration}
+                                                        </div>
+
+                                                    </td>
+                                                    <td style={{ whiteSpace: "nowrap", padding: "10px 60px 10px 20px" }}>
+                                                        <div>
+                                                            opciones...
+                                                        </div>
+
+                                                    </td>
+
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+                        )}
+
+
+
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
