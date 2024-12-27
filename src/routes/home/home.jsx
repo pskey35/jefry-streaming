@@ -495,7 +495,10 @@ function Main() {
 
 export default function App() {
     return (
-        <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="flex h-screen bg-gray-50 dark:bg-gray-900" 
+        
+        >
+
             <Aside></Aside>
             <div style={{ overflow: "hidden", flex: "1" }}>
                 <Header></Header>
