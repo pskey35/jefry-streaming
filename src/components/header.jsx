@@ -154,6 +154,7 @@ function MenuHeaderMobile() {
                 rounded rounded-xl mx-2
                 transition-color
                 mb-6
+               
                 "
                 style={{height:"20%"}}
                     onClick={clickLogOut}
