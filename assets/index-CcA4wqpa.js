@@ -53,6 +53,7 @@ Please change the parent <Route path="${Q}"> to <Route path="${Q==="/"?"*":`${Q}
                 rounded rounded-xl mx-2
                 transition-color
                 mb-6
+               
                 `,style:{height:"20%"},onClick:d,children:[T.jsx("span",{className:"mr-4",children:T.jsx("svg",{xmlns:"http://www.w3.org/2000/svg",fill:"none",viewBox:"0 0 24 24","stroke-width":"1.5",stroke:"currentColor",class:"size-6",children:T.jsx("path",{"stroke-linecap":"round","stroke-linejoin":"round",d:"M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"})})}),T.jsx("span",{children:"Log out"})]})]}),T.jsx("div",{style:{flex:"1"},onClick:()=>f()})]})}function Qf(){G.useState(!1);const[e,r]=G.useState(),i=()=>{};let a=!1;const u=()=>{const f=document.querySelector("#root > div > div > div.menuMobile.md\\:hidden > div"),d=document.querySelector(".menuMobile"),v=document.querySelector("#content");if(a=!a,a){d.style.opacity="1",d.style.display="flex",f.style.animation="fade 400ms ease forwards",v.style.overflow="hidden";return}f.style.animation="retro 400ms ease forwards",d.style.opacity="0",v.style.overflow="visible",setTimeout(()=>{d.style.display="none"},300)};return T.jsxs(T.Fragment,{children:[T.jsx("header",{className:"z-10 py-4 bg-white shadow-md dark:bg-gray-800 w-full ",children:T.jsxs("div",{className:`flex justify-between 
                 md:justify-end
                 container flex items-center justify-end h-full 
