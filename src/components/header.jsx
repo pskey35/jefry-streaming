@@ -157,7 +157,7 @@ function MenuHeaderMobile() {
                 mb-6
                
                 "
-                style={{height:"20%"}}
+                style={{marginBottom:"35%"}}
                     onClick={clickLogOut}
 
                 >
