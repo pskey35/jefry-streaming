@@ -3,6 +3,18 @@ import "./login.scss"
 import { useNavigate } from "react-router-dom"
 
 
+const decodeJWT = (token) => {
+    try {
+        const [, payload] = token.split('.'); // Dividir el token en partes
+        const decodedPayload = atob(payload); // Decodificar el payload en Base64
+        return JSON.parse(decodedPayload); // Convertir el payload en un objeto JSON
+    } catch (error) {
+        console.error("Error al decodificar el JWT:", error);
+        return null;
+    }
+};
+
+
 function Login() {
 
     const [isLoading, setIsLoading] = useState(false)
@@ -25,6 +37,8 @@ function Login() {
 
 
     const clickButtonSend = async () => {
+        const login_messageLogin = document.querySelector("#login-messageLogin")
+        login_messageLogin.style.opacity = "0"
         setIsLoading(true)
         setMessageLogin({
             error: false,
@@ -48,6 +62,7 @@ function Login() {
             })
             setIsLoading(false)
             login_inputUserName.style.border = "1px solid red"
+            login_messageLogin.style.opacity = "1"
             return;
         } else if (body.username.length >= 30) {
             setMessageLogin({
@@ -56,9 +71,11 @@ function Login() {
             })
             setIsLoading(false)
             login_inputUserName.style.border = "1px solid red"
+            login_messageLogin.style.opacity = "1"
             return;
         } else {
             login_inputUserName.style.border = "1px solid #e2e8f0"
+            login_messageLogin.style.opacity = "1"
         }
 
 
@@ -79,8 +96,9 @@ function Login() {
 
 
         try {
+            console.log("esto se envia:::")
             console.log(body)
-            const result = await fetch(`${import.meta.env.VITE_api}/login`, {
+            const result = await fetch(`${import.meta.env.VITE_api}/JWT/api/v1/token/`, {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"
@@ -90,37 +108,36 @@ function Login() {
 
             const data = await result.json()
 
-            if (data?.token) {
+            console.log("data::::")
+            console.log(data)
 
-                localStorage.setItem("token", data.token)
-              
 
+            if (data?.access && data?.refresh) {
+
+                localStorage.setItem("token", data.access)
+                localStorage.setItem("refresh", data.refresh)
+
+
+
+                const payload = decodeJWT(data.refresh)
                 //guardamos el user id en local storage para luego usarlo con /subscription 
-                localStorage.setItem("user_id", data.user.id)   
-
+                localStorage.setItem("user_id", payload.user_id)
 
                 navigate("/")
+            } else {
 
 
-            } else if (data?.error) {
-                setMessageLogin({
-                    error: true,
-                    message: data.error
-                })
-                setIsLoading(false)
-                return;
-            } else if (data?.detail) {
-                setMessageLogin({
-                    error: true,
-                    message: data.detail
-                })
-                setIsLoading(false)
-                return;
+                login_messageLogin.textContent = data?.detail
+                login_messageLogin.style.color = "red"
+                login_messageLogin.style.opacity = "1"
+
+
             }
 
 
 
         } catch (error) {
+
             console.log(error)
 
         }
@@ -250,7 +267,7 @@ function Login() {
                             <p className="mt-4">
                                 <span
                                     className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline cursor-pointer"
-                                    style={{color:"rgba(0, 213, 255, 0.9176470588)"}}
+                                    style={{ color: "rgba(0, 213, 255, 0.9176470588)" }}
                                     href="./forgot-password.html"
                                 >
                                     Forgot your password?
@@ -259,7 +276,7 @@ function Login() {
                             <p className="mt-1">
                                 <span
                                     className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline cursor-pointer"
-                                    style={{color:"rgba(0, 213, 255, 0.9176470588)"}}
+                                    style={{ color: "rgba(0, 213, 255, 0.9176470588)" }}
                                     onClick={() => navigate("/register")}
                                 >
                                     Create account

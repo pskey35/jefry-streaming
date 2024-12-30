@@ -93,6 +93,7 @@ export default function Register() {
             setIsLoading(false)
             return;
         } else {
+            setIsLoading(false)
             inputRepeatPassword.style.border = "1px solid #e2e8f0"
         }
 
@@ -133,6 +134,7 @@ export default function Register() {
         } catch (error) {
             console.log("huubo un error")
             console.log(error)
+            setIsLoading(false)
         }
 
     }
@@ -287,7 +289,7 @@ export default function Register() {
                             <p className="mt-4">
                                 <a
                                     className="link-login text-sm font-medium hover:underline"
-                                    href="./login"
+                                    href="/#/login"
                                 >
                                     Already have an account? Login
                                 </a>

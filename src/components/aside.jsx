@@ -111,6 +111,7 @@ export default function Aside() {
         //cerramos sesion 
 
         localStorage.removeItem("token")
+        localStorage.removeItem("refresh")
         localStorage.removeItem("user_id")
         navigate("/login")
     }
