@@ -190,8 +190,10 @@ function ModalCard() {
         <div className="modalCard w-full h-full fixed z-[1000] flex justify-center items-center"
             data-card="modalCard"
             onClick={clickCloseModalBackground}>
-            <div className="max-w-[600px] bg-black-500 rounded rounded-xl w-[95%] h-[85%] max-h-[650px] bg-white
-            p-8 
+            <div className="
+            p-4
+            max-w-[600px] bg-black-500 rounded rounded-xl w-[95%] h-[85%] max-h-[650px] bg-white
+            md:p-8 
             flex flex-col
             "
                 id="modalContent"
