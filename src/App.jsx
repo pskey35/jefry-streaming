@@ -1,15 +1,20 @@
 import { useState, useEffect } from "react"
-import { HashRouter, BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { HashRouter, BrowserRouter, Routes, Route , Navigate} from "react-router-dom"
 import "../public/styles/index.scss"
 import Home from "./routes/home/home.jsx"
 import Login from "./routes/login/login.jsx"
 import Register from "./routes/register/register.jsx"
 import Suscripciones from "./routes/subscriptions/subscriptions.jsx"
 import Services from "./routes/services/services.jsx"
-import RoutePrivate from "./components/routePrivate.jsx"
+
+
+
 
 
 export default function App() {
+
+
+
   //Refactor dark theme tailwind config
   useEffect(() => {
     const darkTheme = localStorage.getItem("dark")
@@ -22,8 +27,6 @@ export default function App() {
       html.classList.remove("dark")
     }
 
-
-
   }, [])
 
 
@@ -32,21 +35,26 @@ export default function App() {
 
 
     <HashRouter>
+
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
+
         <Route path="*" element={<Navigate to="/login" />} />
+        {/*este navigate no funciona en hashrouter mantenlo en cuenta */ }
+        
         <Route path="/subscriptions" element={
-          <RoutePrivate>
-            <Suscripciones></Suscripciones>
-          </RoutePrivate>
+
+          <Suscripciones></Suscripciones>
+
 
 
         }></Route>
         <Route path="/services" element={<Services></Services>}></Route>
-      </Routes>
+      </Routes >
     </HashRouter >
+
 
 
   )

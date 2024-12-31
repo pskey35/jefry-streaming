@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom"
 
 
 
+
 const IconDashboard = () => (
     <svg
         className="w-5 h-5"
@@ -53,6 +54,8 @@ const IconSubscription = () =>
         <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
     </svg>
 )
+
+
 
 
 
@@ -113,7 +116,7 @@ function MenuHeaderMobile() {
 
 
     return (
-        <div className="menuMobile flex hidden md:hidden " style={{height:"100%"}} >
+        <div className="menuMobile flex hidden md:hidden " style={{ height: "100%" }} >
             <div className="menuMobile_content pt-6 flex flex-col">
                 <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200 mb-6 block " href="/">Windmill</a>
 
@@ -157,7 +160,7 @@ function MenuHeaderMobile() {
                 mb-6
                
                 "
-                style={{marginBottom:"35%"}}
+                    style={{ marginBottom: "35%" }}
                     onClick={clickLogOut}
 
                 >
@@ -179,22 +182,143 @@ function MenuHeaderMobile() {
     )
 }
 
+const useRefreshToken = (initialAccessToken, refreshEndpoint) => {
+    const [accessToken, setAccessToken] = useState(initialAccessToken);
+
+    useEffect(() => {
+        if (!accessToken) return;
+
+        const decodeJWT = (token) => {
+            try {
+                const payload = JSON.parse(atob(token.split(".")[1]));
+                return payload;
+            } catch (e) {
+                console.error("Token inválido:", e);
+                return null;
+            }
+        };
+
+        const scheduleTokenRefresh = () => {
+            const payload = decodeJWT(accessToken);
+            if (!payload || !payload.exp) return;
+
+            const expirationTime = payload.exp * 1000; // Convertir tiempo de expiración a ms
+            const currentTime = Date.now();
+            const timeUntilExpiration = expirationTime - currentTime;
+
+            // Renovar 1 minuto antes de que expire
+            const refreshTime = Math.max(timeUntilExpiration - 60000, 0);
+
+            console.log(`Programando renovación en: ${refreshTime / 1000} segundos`);
+
+            return setTimeout(refreshToken, refreshTime);
+        };
+
+        const refreshToken = async () => {
+            try {
+                const response = await fetch(refreshEndpoint, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        refresh: localStorage.getItem("refresh")
+                    })
+
+                });
+                const data = await response.json();
+
+                console.log("esto llega por data")
+                console.log(data)
+
+                if (data?.access && data?.refresh) {
+
+                    localStorage.setItem("token", data.access)
+                    localStorage.setItem("refresh", data.refresh)
+
+                } else {
+                    console.log("esto es data")
+                    console.log(data)
+                    console.error("Error al renovar el token:", data.message || "Error desconocido");
+                }
+            } catch (error) {
+                console.error("Error de red al renovar el token:", error);
+            }
+        };
+
+        const timeoutId = scheduleTokenRefresh();
+
+        return () => clearTimeout(timeoutId); // Limpiar el timeout al desmontar o cambiar el token
+    }, [accessToken, refreshEndpoint]);
+
+    return { accessToken, setAccessToken };
+};
+
+//aqui no se borra el MenuHeaderMobiel solo se oculta con display none pero sigue ahixd
 function Header() {
 
-    const [isNotificationsMenuOpen, setIsNotificationsMenuOpen] = useState(false)
+
+    const { setAccessToken } = useRefreshToken(null, `${import.meta.env.VITE_api}/JWT/api/v1/token/refresh/`);
+
+    const navigate = useNavigate()
+
+
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+        const refresh = localStorage.getItem("refresh")
+        if (token && refresh) {
+
+            setAccessToken(token)
+            console.log(token, refresh)
+            fetch(`${import.meta.env.VITE_api}/JWT/api/v1/user_data/`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + token
+                }
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error("Error, usuario no valido RESPONSE.OK == FALSE")
+                }
+                return response.json()
+            })
+                .then(data => {
+                    if (!data?.message) {
+                        navigate("/login")
+                    } else {
+                        //si es valido  no se redirige a ningun lado
+                        console.log("usuario valido")
+                    }
+                    console.log("-assas")
+                    console.log(data)
+
+                }
+                ).catch(error => {
+                    console.log("ha ocurridp un error")
+                    console.log(error)
+                })
+
+        } else {
+            navigate("/#/login")
+        }
+    }, [])
+
+
+
+    //const [isNotificationsMenuOpen, setIsNotificationsMenuOpen] = useState(false)
     const [isProfileMenuOpen, setIsProfileMenuOpen] = useState()
-    const dark = false;
+    // const dark = false;
     const toggleProfileMenu = () => {
 
     }
 
-    const closeNotificationsMenu = () => {
-
-    }
-
-    const toggleNotificationsMenu = () => {
-
-    }
+    /* const closeNotificationsMenu = () => {
+     
+     }
+     
+     const toggleNotificationsMenu = () => {
+     
+     }*/
 
     let isOpen = false
 
@@ -229,18 +353,19 @@ function Header() {
 
 
 
-    const toggleTheme = () => {
-        const htmlElement = document.documentElement;
-
-        if (htmlElement.classList.contains('dark')) {
-            htmlElement.classList.remove('dark');
-            //     localStorage.setItem('dark', 'false'); 
-        } else {
-            htmlElement.classList.add('dark');
-            // localStorage.setItem('dark', 'true'); 
-        }
-
-    }
+    /*  const toggleTheme = () => {
+          const htmlElement = document.documentElement;
+     
+          if (htmlElement.classList.contains('dark')) {
+              htmlElement.classList.remove('dark');
+              //     localStorage.setItem('dark', 'false'); 
+          } else {
+              htmlElement.classList.add('dark');
+              // localStorage.setItem('dark', 'true'); 
+          }
+     
+      }
+    */
 
 
 
