@@ -183,7 +183,7 @@ table tbody {
 
 /*----mis confis*/
 #tabla_wrapper>div.dt-layout-row.dt-layout-table {
-    border-radius: 30px;
+    border-radius: 10px;
     overflow: auto;
 }
 
@@ -319,7 +319,7 @@ table tbody {
 #tabla_wrapper {
     background: white;
     padding: 20px 40px;
-    border-radius: 40px;
+    border-radius: 10px;
     box-shadow: 0 0 10px 1.5px #2cd7f915;
 }
 
