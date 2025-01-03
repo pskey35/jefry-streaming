@@ -258,6 +258,7 @@ function MenuButtonMobile() {
         //esto es de mobiles nada mas
         isOpen = !isOpen
         if (isOpen) {
+
             menuMobilBox.style.opacity = "1"
             menuMobilBox.style.display = "flex"
             asideContent.style.animation = "fade 400ms ease forwards"
@@ -267,14 +268,17 @@ function MenuButtonMobile() {
             return;
         }
 
+      /*  asideContent.style.animation = "retro 400ms ease forwards"
+        menuMobilBox.style.opacity = "0"
+        content.style.overflow = "visible"
+        menuMobilBox.style.display = "none"*/
+
         asideContent.style.animation = "retro 400ms ease forwards"
         menuMobilBox.style.opacity = "0"
+        menuMobilBox.style.display = "none"
+        asideContent.style.animation = "fade 400ms ease forwards"
 
-        content.style.overflow = "visible"
-
-        setTimeout(() => {
-            menuMobilBox.style.display = "none"
-        }, 300)
+        content.style.overflow = "auto"
 
 
 
@@ -381,15 +385,15 @@ function Header() {
                     } else {
                         setSaldo(data?.user_profile?.money)
                         //si es valido  no se redirige a ningun lado
-         //               console.log("usuario valido")
+                        //               console.log("usuario valido")
                     }
-         //           console.log("-assas")
-        //            console.log(data)
+                    //           console.log("-assas")
+                    //            console.log(data)
 
                 }
                 ).catch(error => {
-           //         console.log("ha ocurridp un error")
-           //         console.log(error)
+                    //         console.log("ha ocurridp un error")
+                    //         console.log(error)
                 })
 
         } else {
@@ -408,9 +412,9 @@ function Header() {
                 
                 ">
 
-                    
-                        <MenuButtonMobile></MenuButtonMobile>
-                  
+
+                    <MenuButtonMobile></MenuButtonMobile>
+
 
 
 
