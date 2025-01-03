@@ -236,7 +236,7 @@ export function MenuHeaderMobile() {
 
                     </span>
                     <span>
-                        Log out
+                        Salir
                     </span>
                 </div>
             </div>
