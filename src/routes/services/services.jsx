@@ -1,4 +1,4 @@
-import Header from "../../components/header.jsx"
+import Header from "../../components/header/header.jsx"
 import Aside from "../../components/aside.jsx"
 import { useState, useContext, createContext, useEffect } from "react"
 import "./modalCard.css"
