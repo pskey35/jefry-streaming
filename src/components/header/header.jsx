@@ -180,7 +180,10 @@ export function MenuHeaderMobile() {
     return (
         <div className="menuMobile flex hidden md:hidden " style={{ height: "100%" }} >
             <div className="menuMobile_content pt-6 flex flex-col">
-                <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200 mb-6 block " href="/">Windmill</a>
+                <a class="ml-6 text-lg font-bold text-gray-800 
+                dark:text-gray-200 mb-6 block
+                md:hidden
+                 " href="/">Windmill</a>
 
                 <ul className="list-none flex-1">
                     {
