@@ -34,7 +34,7 @@ function Main() {
 
     return (
         <div id="servicesContent">
-            <h2 className="text-[1.5em] p-8 pb-0 font-bold" >Services</h2>
+            <h2 className="text-[1.5em] p-8 pb-0 font-bold" >Servicios</h2>
             <div className="
             cardContainer
         flex  flex-1 gap-8 p-10 flex-col 

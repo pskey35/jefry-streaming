@@ -136,13 +136,13 @@ export function MenuHeaderMobile() {
     {
         icon: <IconServices></IconServices>,
         redirect_to: "/services",
-        title: "Services",
+        title: "Servicios",
         id: 2
     },
     {
         icon: <IconSubscription></IconSubscription>,
         redirect_to: "/subscriptions",
-        title: "Subscriptions",
+        title: "Subscripciones",
         id: 3
     }
     ]
