@@ -184,7 +184,13 @@ export function MenuHeaderMobile() {
                 <a class="ml-6 text-lg font-bold text-gray-800 
                 dark:text-gray-200 mb-6 block
                 md:hidden
-                 " href="/">Sebas streaming</a>
+                flex items-center
+                 " href="/">
+                    <img src="/logoSebas.jpg" className="h-12 w-12 rounded rounded-md"></img>
+                    <span className="ml-4"> Sebas streaming</span>
+
+
+                </a>
 
                 <ul className="list-none flex-1">
                     {
