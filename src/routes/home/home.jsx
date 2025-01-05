@@ -49,7 +49,7 @@ const SideMenu = () => {
                 <a className="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200
                 flex
                 " href="#">
-                <img src="/logoSebas.jpg" className="h-12 w-12 rounded rounded-md"></img>
+       
                  <span className="ml-4"> Sebas streaming</span>
           
                 </a>

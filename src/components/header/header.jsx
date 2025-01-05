@@ -106,8 +106,8 @@ const Aside = memo(function Aside({ saldoUser }) {
                     aria-haspopup="true"
                 >
                     <img
-                        className="object-cover w-8 h-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
+                        className="w-8 h-8 rounded rounded-md"
+                        src="/logoSebas.jpg"
                         alt=""
                         aria-hidden="true"
                     />
@@ -186,7 +186,7 @@ export function MenuHeaderMobile() {
                 md:hidden
                 flex items-center
                  " href="/">
-                    <img src="/logoSebas.jpg" className="h-12 w-12 rounded rounded-md"></img>
+                    <img src="/logoSebas.jpg" className="h-12 w-12 rounded rounded-full"></img>
                     <span className="ml-4"> Sebas streaming</span>
 
 
