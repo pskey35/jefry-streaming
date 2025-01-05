@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, memo } from "react"
 import "./header.scss"
 import { useNavigate, useLocation } from "react-router-dom"
 import { IconSubscription, IconServices, IconDashboard } from "./icons.jsx"
@@ -77,9 +77,10 @@ const useRefreshToken = (initialAccessToken, refreshEndpoint) => {
 
 
 
-function Aside({ saldoUser }) {
-    const toggleProfileMenu = () => {
+const Aside = memo(function Aside({ saldoUser }) {
 
+
+    const toggleProfileMenu = () => {
     }
 
 
@@ -116,7 +117,7 @@ function Aside({ saldoUser }) {
         </ul>
 
     )
-}
+})
 
 
 
@@ -183,7 +184,7 @@ export function MenuHeaderMobile() {
                 <a class="ml-6 text-lg font-bold text-gray-800 
                 dark:text-gray-200 mb-6 block
                 md:hidden
-                 " href="/">Windmill</a>
+                 " href="/">Sebas streaming</a>
 
                 <ul className="list-none flex-1">
                     {
@@ -268,10 +269,10 @@ function MenuButtonMobile() {
             return;
         }
 
-      /*  asideContent.style.animation = "retro 400ms ease forwards"
-        menuMobilBox.style.opacity = "0"
-        content.style.overflow = "visible"
-        menuMobilBox.style.display = "none"*/
+        /*  asideContent.style.animation = "retro 400ms ease forwards"
+          menuMobilBox.style.opacity = "0"
+          content.style.overflow = "visible"
+          menuMobilBox.style.display = "none"*/
 
         asideContent.style.animation = "retro 400ms ease forwards"
         menuMobilBox.style.opacity = "0"
