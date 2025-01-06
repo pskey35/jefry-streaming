@@ -42,7 +42,7 @@ function LogOutMobile() {
         mb-6
        
         "
-            style={{ marginBottom: "35%" }}
+           
             onClick={clickLogOut}
 
         >
