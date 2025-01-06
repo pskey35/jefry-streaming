@@ -15,21 +15,6 @@ export default function App() {
 
 
 
-  //Refactor dark theme tailwind config
-  useEffect(() => {
-    const darkTheme = localStorage.getItem("dark")
-    const html = document.querySelector("html")
-
-    if (darkTheme == "true") {
-      html.classList.add("dark")
-    } else {
-      //aqui entrara en caso no encuentra nada en localstorage o si de en si es falso el valor
-      html.classList.remove("dark")
-    }
-
-  }, [])
-
-
 
   return (
 

@@ -22,7 +22,7 @@ export default function RoutePrivate({ children }) {
                     navigate("/")
                     setIsLoading(false)
                 }, 3000)
-            }else {
+            } else {
                 setIsLoading(false)
             }
 
@@ -41,10 +41,5 @@ export default function RoutePrivate({ children }) {
     }
 
 
-
     return isLoading ? <h1>cargando....</h1> : children;
-
-
-
-
 }
