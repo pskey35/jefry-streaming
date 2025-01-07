@@ -173,7 +173,7 @@ function ModalCard() {
         if(response?.error){
             MySwal.fire({
                 title: "Error",
-                text: "Este servicio no esta disponible",
+                text: response.error,
                 icon: "error"
             })
         }else if(response?.success){
