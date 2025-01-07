@@ -366,7 +366,7 @@ export default function Table({ data,isLoading, setData, setExistData, setIsLoad
             $("#tabla").DataTable({
                 order: [[6, 'desc']], // Ordena por la columna "Fecha de vencimiento"
                 pageLength: 3, // Número de filas por página
-                lengthMenu: [5, 10, 25, 50, 100], // Opciones de filas por página
+                lengthMenu: [5,10,15,20,50,100], // Opciones de filas por página
                 pagingType: "full_numbers", // Tipo de controles de paginación
                 language: {
                     paginate: {
