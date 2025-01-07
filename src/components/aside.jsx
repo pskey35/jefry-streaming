@@ -91,9 +91,18 @@ function TitleWeb() {
             }
         }).then(e => e.json())
             .then(data => {
-                console.log("esto llega de data")
-                console.log(data)
-                setDataUser(data?.user_data?.username)
+                
+                if(data?.user_data?.username){
+                    console.log("esto llega de data")
+                    console.log(data)
+                    setDataUser(data?.user_data?.username)
+                }else{
+                    localStorage.removeItem("token")
+                    localStorage.removeItem("refresh")
+                    navigate("/login")
+                }
+             
+
             })
 
     }, [])

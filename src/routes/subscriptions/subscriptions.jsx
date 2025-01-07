@@ -49,9 +49,9 @@ export default function Subscriptions() {
 
 
     return (
-        <div className="w-full overflow-x-auto flex bg-gray-50 h-full" style={{ height: '100vh' }}>
+        <div className="w-full overflow-x-auto flex bg-gray-50 h-full">
             <Aside />
-            <div className="w-full flex flex-col items-center flex-[10]">
+            <div className="w-full flex flex-col items-center h-full">
                 <Header />
                 <div className="w-full overflow-hidden 
                 rounded-3xl shadow-xs flex-1 flex 

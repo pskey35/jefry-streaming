@@ -11,8 +11,8 @@ function ItemCard({ dataUnidad, value, key }) {
     return (
         <div key={key} className="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div className="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100"
-            style={{backgroundColor:dataUnidad.backgroundColor,color:dataUnidad.colorSVG}}
-            
+                style={{ backgroundColor: dataUnidad.backgroundColor, color: dataUnidad.colorSVG }}
+
             >
                 {dataUnidad.iconSVG}
             </div>
@@ -42,7 +42,7 @@ export default function Cards() {
 
         if (token) {
             if (token.length < 10) {
-                navigate("/login")
+                navigate("/#/login")
                 return;
             } else {
 
@@ -54,7 +54,14 @@ export default function Cards() {
                     }
                 }).then(e => e.json())
                     .then(data => {
-                        console.clear()
+                        if (data?.code == "token_not_valid") {
+                            
+                            localStorage.removeItem("token")
+                            localStorage.removeItem("refresh")
+
+                            navigate("/login")
+                            return;
+                        }
                         console.log("esperano.....")
                         console.log("dashboard data>>", data)
                         setDataDashboard(data)
@@ -91,8 +98,8 @@ export default function Cards() {
                 ></path>
             </svg>),
             dataKey: "money",
-            backgroundColor:"#dcfce7",
-            colorSVG:"#75903d"
+            backgroundColor: "#dcfce7",
+            colorSVG: "#75903d"
         },
         {
             titleCard: "Compras",
@@ -102,17 +109,17 @@ export default function Cards() {
                 ></path>
             </svg>),
             dataKey: "purchases",
-            backgroundColor:"#cd00cd21",
-            colorSVG:"purple"
+            backgroundColor: "#cd00cd21",
+            colorSVG: "purple"
         },
         {
             titleCard: "Fecha de registro",
             iconSVG: (
-                <svg fill="currentColor"  version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                <svg fill="currentColor" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"
                     width="18px"
                     height="18px"
-                    >
+                >
                     <g>
                         <g>
                             <path d="M422.268,21.113v-2.639C422.268,8.288,413.98,0,403.794,0H382.68c-10.186,0-18.474,8.288-18.474,18.474v2.639h-79.175
@@ -137,8 +144,8 @@ export default function Cards() {
                     </g>
                 </svg>),
             dataKey: "date_joined",
-            backgroundColor:"#a3f1ff",
-            colorSVG:"#293c40"
+            backgroundColor: "#a3f1ff",
+            colorSVG: "#293c40"
         },
 
     ]

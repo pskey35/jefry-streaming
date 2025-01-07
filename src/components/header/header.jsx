@@ -60,6 +60,8 @@ const useRefreshToken = (initialAccessToken, refreshEndpoint) => {
                 } else {
                     console.log("esto es data")
                     console.log(data)
+                    localStorage.removeItem("token")
+                    localStorage.remoteItem("refresh")
                     console.error("Error al renovar el token:", data.message || "Error desconocido");
                 }
             } catch (error) {
@@ -154,6 +156,9 @@ function Header() {
             })
                 .then(data => {
                     if (!data?.message) {
+                        
+                        localStorage.removeItem("token")
+                        localStorage.remoteItem("refresh")
                         navigate("/login")
                     } else {
                         setSaldo(data?.user_profile?.money)
