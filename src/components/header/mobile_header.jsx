@@ -1,6 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom"
 import { IconDashboard, IconServices, IconSubscription } from "./icons_header"
-
+import { useEffect, useState } from "react"
 
 const asideList = [{
     icon: <IconDashboard></IconDashboard>,
@@ -42,7 +42,7 @@ function LogOutMobile() {
         mb-6
        
         "
-           
+
             onClick={clickLogOut}
 
         >
@@ -103,7 +103,24 @@ function ItemAside({ dataUnidad }) {
 
 
 export function MenuHeaderMobile() {
+    const [dataUser, setDataUser] = useState(null)
+    useEffect(() => {
+        const token = localStorage.getItem("token")
 
+        fetch(`${import.meta.env.VITE_api}/JWT/api/v1/user_data/`, {
+            method: "GET",
+            headers: {
+                "Content-type": "Application/json",
+                "Authorization": "Bearer " + token
+            }
+        }).then(e => e.json())
+            .then(data => {
+                console.log("esto llega de data")
+                console.log(data)
+                setDataUser(data?.user_data?.username)
+            })
+
+    }, [])
 
 
 
@@ -127,13 +144,19 @@ export function MenuHeaderMobile() {
     return (
         <div className="menuMobile flex hidden md:hidden " style={{ height: "calc(100% - 68px)" }} >
             <div className="menuMobile_content pt-6 flex flex-col">
-                <a class="ml-6 text-lg font-bold text-gray-800 
+                <a class="ml-4 text-lg font-bold text-gray-800 
                 dark:text-gray-200 mb-6 block
                 md:hidden
                 flex items-center
                  " href="/">
-                    <img src="/logoSebas.jpg" className="h-12 w-12 rounded rounded-full"></img>
-                    <span className="ml-4"> Sebas streaming</span>
+
+                  {/*
+                       <img src="/logoSebas.jpg" className="h-12 w-12 rounded rounded-full"></img>
+                  */}
+                  
+               
+                  
+                    <span className="ml-4"> {dataUser == null ? "..." : dataUser} </span>
 
 
                 </a>
@@ -179,7 +202,7 @@ export function MenuButtonMobile() {
             menuMobilBox.style.display = "flex"
             asideContent.style.animation = "fade 400ms ease forwards"
 
-        //    content.style.overflow = "hidden"
+            //    content.style.overflow = "hidden"
 
             return;
         }

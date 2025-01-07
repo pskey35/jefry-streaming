@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom"
-import {IconDashboard,IconServices,IconSubscription} from "./icons_aside.jsx"
-
+import { IconDashboard, IconServices, IconSubscription } from "./icons_aside.jsx"
+import {useState,useEffect} from "react"
 
 /*
 user:pablo123
@@ -78,6 +78,26 @@ function ItemAside({ dataUnidad }) {
 }
 
 function TitleWeb() {
+
+    const [dataUser, setDataUser] = useState(null)
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+
+        fetch(`${import.meta.env.VITE_api}/JWT/api/v1/user_data/`, {
+            method: "GET",
+            headers: {
+                "Content-type": "Application/json",
+                "Authorization": "Bearer " + token
+            }
+        }).then(e => e.json())
+            .then(data => {
+                console.log("esto llega de data")
+                console.log(data)
+                setDataUser(data?.user_data?.username)
+            })
+
+    }, [])
+
     return (
         <>
             <a className="ml-4 text-lg font-bold text-gray-800 dark:text-gray-200
@@ -85,7 +105,7 @@ function TitleWeb() {
                 " href="/">
 
 
-                <span className="ml-4">Sebas streaming</span>
+                <span className="ml-4">{dataUser == null ? "..." : dataUser} </span>
 
             </a>
         </>
