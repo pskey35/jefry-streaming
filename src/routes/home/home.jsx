@@ -97,7 +97,7 @@ export default function App() {
     //aqui hare el fetch ya se que el header tiene su fetch pero lo mejor pondre useNavigate == "dashboard" que no se haga 
     //fetch en  el home asi mas facil enbes de envolver en useContext
     return (
-        <div className="flex h-screen bg-gray-50 dark:bg-gray-900"
+        <div className="flex h-full bg-gray-50 dark:bg-gray-900"
 
         >
 
