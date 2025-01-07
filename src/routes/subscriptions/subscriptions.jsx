@@ -51,7 +51,7 @@ export default function Subscriptions() {
     return (
         <div className="w-full overflow-x-auto flex bg-gray-50 h-full">
             <Aside />
-            <div className="w-full flex flex-col items-center h-full">
+            <div className="rightContent flex flex-col items-center h-full" style={{width:"calc(100% - 256px)"}}>
                 <Header />
                 <div className="w-full overflow-hidden 
                 rounded-3xl shadow-xs flex-1 flex 
@@ -69,7 +69,9 @@ export default function Subscriptions() {
                         isLoading ? (
                             <div className="spinner" > </div>
                         ) : (
-                            <div className="w-full auto rounded-xl border border-gray-200 rounded-md max-w-[100%] lg:max-w-[96%]" id="containerTable">
+                            <div className="w-full auto rounded-xl border border-gray-200 rounded-md max-w-[100%] lg:max-w-[96%]" 
+                            style={{width:"100% !important"}}
+                            id="containerTable">
                                 <h2 className="text-[1.5em] font-bold mb-4">Subscripciones</h2>
 
                                 <div className="tableContent">

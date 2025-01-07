@@ -27,6 +27,7 @@
         width: 700px;
     }
 }
+
 @media (min-width:1001px) and (max-width:1100px) {
     #containerTable {
         width: 750px;
@@ -347,3 +348,12 @@ table tbody {
 }
 
 
+
+
+
+@media (max-width:768px) {
+    .rightContent {
+        width: 100%  !important;
+    }
+
+}
