@@ -4,8 +4,9 @@ import $ from "jquery"; // Importa jQuery
 import "datatables.net-dt/css/dataTables.dataTables.css"; // Estilos de DataTables
 import "datatables.net"; // Importa DataTables
 
-export default function Table({ isLoading, setData, setExistData, setIsLoading }) {
-    const data = [
+export default function Table({ data,isLoading, setData, setExistData, setIsLoading }) {
+
+   /* const data = [
         {
             id: 50,
             user: {
@@ -313,6 +314,9 @@ export default function Table({ isLoading, setData, setExistData, setIsLoading }
             date_expiration: " 2024 - 12 - 25"
         }
     ]
+
+
+    */
 
     useEffect(() => {
         const fetchData = async () => {
