@@ -83,6 +83,7 @@ function InputPassword() {
 
 
 function ButtonLogin() {
+    const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
     const {setMessageLogin} = useContext(LoginContext)
 
@@ -286,7 +287,7 @@ function LoginLeft() {
 
 
 function Login() {
-
+    const navigate = useNavigate()
 
     const [messageLogin, setMessageLogin] = useState({
         error: false,

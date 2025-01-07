@@ -127,14 +127,14 @@ export default function Register() {
             console.log("esto llego>>>", data)
 
             if (data?.message) {
-               
+
                 setMessageRegister({
                     error: false,
                     message: data.message
                 })
                 setIsLoading(false)
 
-                  navigate("/#/login")
+                navigate("/#/login")
 
                 return;
             } else if (data?.username) {
@@ -206,10 +206,10 @@ export default function Register() {
                     <div className="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
                         <div className="w-full">
                             <h1 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
-                                Create account
+                                Crear cuenta
                             </h1>
                             <label className="block text-sm">
-                                <span className="text-gray-700 dark:text-gray-400">User name</span>
+                                <span className="text-gray-700 dark:text-gray-400">Nombre de usuario</span>
                                 <input
                                     className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-blue-300 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input register-input"
                                     onInput={inputUserName_event}
@@ -218,7 +218,7 @@ export default function Register() {
                                 />
                             </label>
                             <label className="block mt-4 text-sm">
-                                <span className="text-gray-700 dark:text-gray-400">Password</span>
+                                <span className="text-gray-700 dark:text-gray-400">Contraseña</span>
                                 <input
                                     className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-blue-300 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input register-input"
                                     placeholder="***************"
@@ -228,7 +228,7 @@ export default function Register() {
                             </label>
                             <label className="block mt-4 text-sm">
                                 <span className="text-gray-700 dark:text-gray-400">
-                                    Confirm password
+                                    Confirma tu contraseña
                                 </span>
                                 <input
                                     className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-blue-300 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input register-input"
@@ -239,6 +239,8 @@ export default function Register() {
                                 />
                             </label>
 
+
+{/*
                             <div className="flex mt-6 text-sm">
                                 <label className="flex items-center dark:text-gray-400">
                                     <input
@@ -251,7 +253,7 @@ export default function Register() {
                                     </span>
                                 </label>
                             </div>
-
+*/}
                             {/* You should use a button here, as the anchor is only used for the example */}
                             <div
                                 className="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple h-[38px]"
@@ -262,29 +264,29 @@ export default function Register() {
 
                                 {isLoading ?
                                     <div className="loader"></div>
-                                    : "Create account"}
+                                    : "Crear cuenta"}
 
 
                             </div>
 
-                            <div className="register-message" style={{color: messageRegister.error ? "red":"green"}}>
+                            <div className="register-message" style={{ color: messageRegister.error ? "red" : "green" }}>
                                 {messageRegister.message}
                             </div>
-                        <hr className="my-8" />
+                            <hr className="my-8" />
 
-                    
-                        <p className="mt-4">
-                            <a
-                                className="link-login text-sm font-medium hover:underline"
-                                href="/#/login"
-                            >
-                                Already have an account? Login
-                            </a>
-                        </p>
+
+                            <p className="mt-4">
+                                <a
+                                    className="link-login text-sm font-medium hover:underline"
+                                    href="/#/login"
+                                >
+                                    Ya tienes una cuenta? Iniciar sesión
+                                </a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div >
 
     )
