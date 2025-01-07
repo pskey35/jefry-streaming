@@ -40,7 +40,7 @@ function InputUserName() {
 
     return (
         <label className="block text-sm">
-            <span className="text-gray-700 dark:text-gray-400">user name</span>
+            <span className="text-gray-700 dark:text-gray-400">Nombre de usuario</span>
             <input
                 type="email"
                 onInput={inputUserNameEvent}
@@ -69,7 +69,7 @@ function InputPassword() {
     }
     return (
         <label className="block mt-4 text-sm">
-            <span className="text-gray-700 dark:text-gray-400">Password</span>
+            <span className="text-gray-700 dark:text-gray-400">Contraseña</span>
             <input
                 type="password"
                 onInput={inputPasswordEvent}
@@ -210,7 +210,7 @@ function ButtonLogin() {
         >
             {
                 isLoading ? <div className="loader"></div>
-                    : "Log in"
+                    : "Iniciar sesión"
             }
         </button>
     )
@@ -228,7 +228,7 @@ function LoginRight() {
     return (
         <div className="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
             <div className="w-full">
-                <h1 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">Login</h1>
+                <h1 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">Iniciar sesión</h1>
 
                 <InputUserName></InputUserName>
                 <InputPassword></InputPassword>
@@ -250,7 +250,7 @@ function LoginRight() {
                         style={{ color: "rgba(0, 213, 255, 0.9176470588)" }}
                         onClick={() => navigate("/register")}
                     >
-                        Create account
+                        Crear una cuenta
                     </span>
                 </p>
 
