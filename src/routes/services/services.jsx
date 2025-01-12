@@ -32,6 +32,17 @@ function Main() {
             })
     }, [])
 
+
+    useEffect(() => {
+        if (loaderService) {
+
+          
+               document.querySelector("#serviceContent").style.maxHeight = "none"
+        } else {
+            document.querySelector("#serviceContent").style.maxHeight = "max-content"
+        }
+    }, [loaderService])
+
     return (
         <div id="servicesContent">
             <h2 className="text-[1.5em] p-8 pb-0 font-bold" >Servicios</h2>
@@ -40,8 +51,11 @@ function Main() {
         flex  flex-1 gap-8 p-10 flex-col 
         sm:flex-row
         relative flex-wrap
-      
-        ">
+       
+        "
+                id="serviceContent"
+                style={{ maxHeight: "max-content" , justifyContent:"space-evenly"}}
+            >
 
                 {
 
@@ -51,42 +65,52 @@ function Main() {
                             return (
                                 <div className="w-[100%] 
                         max-w-[450px] bg-gray-100 
-                        max-h-[max-content]
-                        p-4 h-auto h-[max-content]
+                     
+                        p-4 h-auto 
                         max-w-[22em]
                         rounded-xl flex-1 flex flex-col
                         cursor-pointer
                         hover:scale-105 transform transition duration-300 ease
-                          min-w-[300px]      
+                          min-w-[300px]
+                          max-h-[232px]
                         "
-                        key={dataUnidad.id}
+
+                                    style={{ minHeight: "232px", justifyContent: "space-between"}}
+                                    key={dataUnidad.id}
 
                                     onClick={() => clickCard(dataUnidad)}
                                 >
 
                                     <div className="flex justify-evenly items-start mb-4">
-                                        <div className="h-24 w-24">
-                                            <img src={dataUnidad.image} className="w-full h-full  object-contain"></img>
+                                        <div className="h-24 w-24 relative rounded rounded-full overflow-hidden">
+                                            <img src={dataUnidad.image}
+                                                className="w-full h-full  object-contain z-10 absolute top-0 left-0
+                                             
+                                             " style={{ backdropFilter: "blur(30px)" }}>
+
+                                            </img>
+                                            <img src={dataUnidad.image} className="w-full h-full  object-cover z-3 absolute top-0 left-0"></img>
                                         </div>
-                                        <div className="pt-2 pl-2">
+                                        <div className="pt-2 pl-2 flex-1">
                                             <span style={{ fontWeight: "700" }}>{dataUnidad.name}</span>
                                             <div className="break-all">
                                                 {dataUnidad.description.length > 50 ? dataUnidad.description.slice(0, 50) + "..." : dataUnidad.description}
                                             </div>
+                                            <div className="font-bold text-2xl mt-4">${dataUnidad.price}</div>
                                         </div>
                                     </div>
 
 
-                                    <div className="h-[50px]">
+                                    <div className="h-auto">
                                         <div className="
                                         bgColorBlue
                                         w-full
                                 cursor-pointer
-                                 bg-blue-200 p-2 rounded rounded-xl 
+                                 bg-blue-200 p-4 rounded rounded-xl 
                                  hover:bg-blue-400
-                                 flex justify-evenly items:center" 
-                                 
-                                 >
+                                 flex justify-evenly items:center"
+
+                                        >
 
                                             <span
 
@@ -159,7 +183,7 @@ function ModalCard() {
             user_id: parseInt(user_id),
             service_id: dataModal.id
         }
-        console.log("esto se envia",body)
+        console.log("esto se envia", body)
 
         const resu = await fetch(`${import.meta.env.VITE_api}/subscriptions/api/v1/create/`, {
             method: "POST",
@@ -170,13 +194,13 @@ function ModalCard() {
         })
         const response = await resu.json()
         console.log(response)
-        if(response?.error){
+        if (response?.error) {
             MySwal.fire({
                 title: "Error",
                 text: response.error,
                 icon: "error"
             })
-        }else if(response?.success){
+        } else if (response?.success) {
             MySwal.fire({
                 title: "Exito",
                 text: "Servicio comprado",
@@ -238,8 +262,8 @@ function ModalCard() {
                     </div>
                 </div>
                 <div className="bgColorBlue buttonModalBuy w-full
-                 bg-blue-300 rounded rounded-xl color-white text-center p-4" 
-                style={{color:"white"}} onClick={clickBuying}>
+                 bg-blue-300 rounded rounded-xl color-white text-center p-4"
+                    style={{ color: "white" }} onClick={clickBuying}>
                     Comprar
                 </div>
 
