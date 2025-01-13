@@ -46,11 +46,13 @@ function Main() {
     return (
         <div id="servicesContent">
             <h2 className="text-[1.5em] p-8 pb-0 font-bold" >Servicios</h2>
+           
             <div className="
-            cardContainer
-        flex  flex-1 gap-8 p-10 flex-col 
-        sm:flex-row
-        relative flex-wrap
+         
+           grid grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-6
+           justify-center
+            p-6
+        relative 
        
         "
                 id="serviceContent"
@@ -63,25 +65,26 @@ function Main() {
                     loaderService ? <div className="spinner"></div>
                         : dataCards && dataCards.map((dataUnidad, index) => {
                             return (
-                                <div className="w-[100%] 
-                        max-w-[450px] bg-gray-100 
+                                <div className="w-full 
+                        max-w-[450px] bg-gray-200 
+                        p-8 h-auto 
                      
-                        p-4 h-auto 
-                        max-w-[22em]
                         rounded-xl flex-1 flex flex-col
                         cursor-pointer
                         hover:scale-105 transform transition duration-300 ease
-                          min-w-[300px]
+                          min-w-[50%]
                           max-h-[232px]
+                          m-auto w-[95%]
+                       
                         "
 
-                                    style={{ minHeight: "232px", justifyContent: "space-between"}}
+                                    style={{ minHeight: "232px", justifyContent: "space-between",border:"2px solid #dddddd"}}
                                     key={dataUnidad.id}
 
                                     onClick={() => clickCard(dataUnidad)}
                                 >
 
-                                    <div className="flex justify-evenly items-start mb-4">
+                                    <div className="flex justify-evenly items-start">
                                         <div className="h-24 w-24 relative rounded rounded-full overflow-hidden">
                                             <img src={dataUnidad.image}
                                                 className="w-full h-full  object-contain z-10 absolute top-0 left-0
@@ -91,12 +94,12 @@ function Main() {
                                             </img>
                                             <img src={dataUnidad.image} className="w-full h-full  object-cover z-3 absolute top-0 left-0"></img>
                                         </div>
-                                        <div className="pt-2 pl-2 flex-1">
+                                        <div className="p-[15px] flex-1">
                                             <span style={{ fontWeight: "700" }}>{dataUnidad.name}</span>
                                             <div className="break-all">
                                                 {dataUnidad.description.length > 50 ? dataUnidad.description.slice(0, 50) + "..." : dataUnidad.description}
                                             </div>
-                                            <div className="font-bold text-2xl mt-4">${dataUnidad.price}</div>
+                                            <div className="font-bold text-2xl">${dataUnidad.price}</div>
                                         </div>
                                     </div>
 

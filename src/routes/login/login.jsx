@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./login.scss"
 import { useNavigate } from "react-router-dom"
 
@@ -20,7 +20,7 @@ const decodeJWT = (token) => {
 
 function InputUserName() {
 
-    const {setMessageLogin} = useContext(LoginContext)
+    const { setMessageLogin } = useContext(LoginContext)
 
     const inputUserNameEvent = (event) => {
         if (event.target.value.length == 0) {
@@ -55,7 +55,7 @@ function InputUserName() {
 
 
 function InputPassword() {
-    const {setMessageLogin} = useContext(LoginContext)
+    const { setMessageLogin } = useContext(LoginContext)
 
     const inputPasswordEvent = (event) => {
         if (event.target.value.length >= 1) {
@@ -85,7 +85,7 @@ function InputPassword() {
 function ButtonLogin() {
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
-    const {setMessageLogin} = useContext(LoginContext)
+    const { setMessageLogin } = useContext(LoginContext)
 
     const clickButtonSend = async () => {
         const login_messageLogin = document.querySelector("#login-messageLogin")
@@ -221,7 +221,7 @@ function ButtonLogin() {
 
 function LoginRight() {
 
-    const {messageLogin} = useContext(LoginContext)
+    const { messageLogin } = useContext(LoginContext)
     const navigate = useNavigate();
 
 
@@ -264,19 +264,22 @@ function LoginRight() {
 
 function LoginLeft() {
     return (
-        <div className="h-32 md:h-auto md:w-1/2">
+        <div className="h-[45vh] md:h-[98vh] md:w-1/2 relative">
             <img
                 aria-hidden="true"
-                className="object-cover w-full h-full dark:hidden"
-                src="/assets/login-office.jpeg"
+                className="object-contain w-full h-full absolute top-0 left-0 z-10"
+                src="/assets/streaming.png"
                 alt="Office"
+                style={{backdropFilter:"blur(100px)"}}
+                
             />
             <img
                 aria-hidden="true"
-                className="hidden object-cover w-full h-full dark:block"
-                src="/assets/login-office-dark.jpeg"
+                className="object-cover w-full h-full"
+                src="/assets/streaming.png"
                 alt="Office"
             />
+
         </div>
 
     )
@@ -305,7 +308,7 @@ function Login() {
     }, [])
 
 
-    const value = {messageLogin,setMessageLogin}
+    const value = { messageLogin, setMessageLogin }
 
     return (
         <LoginContext.Provider value={value}>
