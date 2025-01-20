@@ -96,9 +96,7 @@ table tbody {
     color: #333;
 }
 
-#containerTable tbody td img {
-    margin-right: 10px;
-}
+
 
 #containerTable tbody td span {
     vertical-align: middle;
@@ -253,6 +251,13 @@ table tbody {
     background: white;
     border-radius: 7px;
 }
+#tabla>tbody>tr>td:nth-child(2){
+    padding:0.5rem !important;
+}
+#tabla>tbody>tr>td:nth-child(9){
+    padding:0 !important;
+}
+
 
 #tabla>tbody>tr:hover {
     background: rgb(252, 242, 255);
