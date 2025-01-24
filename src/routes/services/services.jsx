@@ -92,17 +92,27 @@ function Main() {
                                     
                                     "
                 >
-                  <div className="h-24 w-24 relative rounded rounded-full overflow-hidden">
+                  <div
+                    className="h-44 w-full relative rounded rounded-xl overflow-hidden
+                  
+                  "
+                  >
+                    <div
+                      className="w-full h-full  z-10 absolute top-0 left-0
+                    flex justify-center items-center
+                    "
+                      style={{ backdropFilter: "blur(40px)",background:"#ffffff2e"}}
+                    >
+                      <img
+                        src={dataUnidad.image}
+                        className="w-28 h-28 object-cover 
+                        border-gray-200
+                         rounded-full"
+                      ></img>
+                    </div>
                     <img
                       src={dataUnidad.image}
-                      className="w-full h-full  object-contain z-10 absolute top-0 left-0
-                                             
-                                             "
-                      style={{ backdropFilter: "blur(30px)" }}
-                    ></img>
-                    <img
-                      src={dataUnidad.image}
-                      className="w-full h-full  object-cover z-3 absolute top-0 left-0"
+                      className="w-full h-full transform scale-300 object-cover z-3 absolute top-0 left-0"
                     ></img>
                   </div>
                   <div
@@ -131,6 +141,8 @@ function Main() {
 
                     <div
                       className="flex justify-between items-center
+
+                      md:justify-evenly
                    
                     "
                     >
