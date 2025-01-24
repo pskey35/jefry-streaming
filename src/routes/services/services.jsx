@@ -72,14 +72,18 @@ function Main() {
               <div
                 className="
                 //mobil card
-                px-6  w-full  h-[470px] bg-gray-200 border border-gray-200
+                px-6  w-full  h-[470px] bg-gray-200
                 rounded-2xl
                 flex flex-col justify-center items-center
 
                 md:w-full  md:h-full
                 md:py-8
+                transition transition-duration-1000 cursor-pointer
+
+                hover:transform hover:scale-105
                         "
                 key={dataUnidad.id}
+                style={{border:"2px solid rgb(205 212 213 / 21%)" }}
                 onClick={() => clickCard(dataUnidad)}
               >
                 <div
