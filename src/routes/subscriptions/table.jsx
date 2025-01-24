@@ -5,6 +5,8 @@ import "datatables.net-dt/css/dataTables.dataTables.css"; // Estilos de DataTabl
 import "datatables.net"; // Importa DataTables
 
 const WhatsappButton = ({ item }) => {
+
+  /*
   const link = `https://api.whatsapp.com/send?text=_*%E2%9C%85%20Servicio:*%20*
 ${item?.profile?.account?.service?.name}
 _%0A%F0%9F%91%A4%20Cliente:%20${item?.user?.username}
@@ -15,10 +17,26 @@ _%0A%F0%9F%91%A4%20Cliente:%20${item?.user?.username}
 %0A%0A%E2%9A%A0%EF%B8%8F%20Detalles:%20Prohibido%20editar%20el%20perfil,%20no%20cambiar%20datos%20del%20servicio,%201%20perfil,%201%20dispositivo,%20si%20no%20perderá%20la%20garantía%20del%20servicio.%0A%0A%F0%9F%93%8D%20Fecha%20de%20corte:*%20${
     new Date(item.date_expiration).toISOString().split("T")[0]
   }`;
+*/
 
+const link = `
+      https://api.whatsapp.com/send?text=_*%E2%9C%85%20Servicio:*%20*${item?.profile?.account?.service?.name}_%0A%F0%9F%91%A4%20Cliente:%20${item?.profile?.user?.username || "No especificado"}%0A%0A%F0%9F%93%A7%20Correo:%20${item?.profile?.user?.email || "No especificado"}%0A%F0%9F%94%91%20Contrase%C3%B1a:%20${item?.profile?.user?.password || "No especificado"}%0A%0A%E2%98%91%EF%B8%8F%20Perfil:%20${item?.profile?.name || "No especificado"}%0A%F0%9F%94%90%20PIN:%20${item?.profile?.pin || "No especificado"}%0A%0A%E2%9A%A0%EF%B8%8F%20Detalles:%20Prohibido%20editar%20el%20perfil,%20no%20cambiar%20datos%20del%20servicio,%201%20perfil,%201%20dispositivo,%20si%20no%20perderá%20la%20garantía%20del%20servicio.%0A%0A%F0%9F%93%8D%20Fecha%20de%20corte:*%20${new Date(item.date_expiration).toISOString().split("T")[0]}"
+`
+
+/*
+const link = `https://api.whatsapp.com/send?text=_*📋 Servicio:*%20${item?.profile?.account?.service?.name || "No especificado"}%0A%0A
+_*👤 Cliente:*%20${item?.user?.username || "No especificado"}%0A%0A
+_*📧 Correo:*%20${item?.user?.email || "No especificado"}%0A%0A
+_*🔒 Contraseña:*%20${item?.account?.password || "No especificado"}%0A%0A
+_*📝 Perfil:*%20${item?.profile?.name || "No especificado"}%0A%0A
+_*🔑 PIN:*%20${item?.profile?.pin || "No especificado"}%0A%0A
+_*⚠️ Detalles:*%20Prohibido%20editar%20el%20perfil,%20no%20cambiar%20datos%20del%20servicio,%201%20perfil,%201%20dispositivo,%20si%20no%20perderá%20la%20garantía%20del%20servicio.%0A%0A
+_*📅 Fecha de corte:*%20${new Date(item.date_expiration).toISOString().split("T")[0]}`;
+*/
  
   console.log(link)
   console.log("")
+  /*
   console.log(`
     ✅ Servicio: ${item?.profile?.account?.service?.name}
     
@@ -33,7 +51,7 @@ _%0A%F0%9F%91%A4%20Cliente:%20${item?.user?.username}
     ⚠️ Detalles: Prohibido editar el perfil, no cambiar datos del servicio, 1 perfil, 1 dispositivo, si no perderá la garantía del servicio.
     
     📆 Fecha de corte: ${new Date(item.date_expiration).toISOString().split("T")[0]}
-    `);
+    `);*/
 
   return (
     <div className="bottom-4 right-4">
