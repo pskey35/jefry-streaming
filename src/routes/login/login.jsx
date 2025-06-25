@@ -245,6 +245,8 @@ function LoginRight() {
                 <p className="mt-4"></p>
 
 
+
+                {/*
                 <p className="mt-1">
                     <span
                         className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline cursor-pointer"
@@ -254,7 +256,7 @@ function LoginRight() {
                         Crear una cuenta
                     </span>
                 </p>
-
+*/}
 
             </div>
         </div>
@@ -270,8 +272,8 @@ function LoginLeft() {
                 className="object-contain w-full h-full absolute top-0 left-0 z-10"
                 src="/assets/streaming.png"
                 alt="Office"
-                style={{backdropFilter:"blur(100px)"}}
-                
+                style={{ backdropFilter: "blur(100px)" }}
+
             />
             <img
                 aria-hidden="true"
